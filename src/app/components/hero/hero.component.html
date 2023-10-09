@@ -1,14 +1,208 @@
-<div class="bg-cover bg-no-repeat bg-top  py-56" style="background-image: url(assets/home-page.jpg);">
-    <div class="container">
-        <h1 class="text-6xl text-gray-800 font-medium mb-4 capitalize">
-            Some shit
+<div class="bg-cover bg-no-repeat bg-bottom  py-56 h-full" style="background-image: url(assets/home-page.jpg);">
+    <div class="container text-white">
+        <h1 class="text-6xl  font-medium mb-4 capitalize ">
+            Shop 'Til You Drop
         </h1>
         <p>some text</p>
         <p>some text</p>
-        <p>some text</p>
         <div class="mt-12">
-            <a href="#" class="bg-primary border border-primary text-black px-8 py-3 font-medium rounded-md hover:bg-transparent hover:text-primary transition">Shop Now</a>
+            <a href="#" class="bg-primary border border-primary text-gray-800 px-8 py-3 font-medium rounded-md hover:bg-transparent hover:text-primary transition">Shop Now</a>
         </div>
     </div>
 
+</div>
+
+<div class="container py-16">
+    <div class="w-10/12 grid grid-cols-3 gap-6 mx-auto justify-center">
+        <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
+            <img src="assets/delivery-truck.png" class="w-14 h-14 object-contain">
+            <div>
+                <h4 class="font-medium capitalize text-lg">Free shopping</h4>
+                <p class="text-gray-500 text-sm" >Order over $200</p>
+            </div>
+        </div>
+
+        <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
+            <img src="assets/cashback.png" class="w-12 h-12 object-contain">
+            <div>
+                <h4 class="font-medium capitalize text-lg">Money Returns</h4>
+                <p class="text-gray-500 text-sm" >30 Days money return</p>
+            </div>
+        </div>
+
+        <div class="border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5">
+            <img src="assets/24-hour.png" class="w-12 h-12 object-contain">
+            <div>
+                <h4 class="font-medium capitalize text-lg">24/7 Support</h4>
+                <p class="text-gray-500 text-sm" >Customer support</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container py-16">
+    <h2 class="text-3xl font-semibold text-gray-800 uppercase mb-6">Shop by category</h2>
+    <div class="grid grid-cols-3 gap-3">
+        <div class="relative rounded-sm overflow-hidden group">
+            <img src="assets/accessories.jpg" class="w-full h-full">
+            <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition">Apparel and accessories</a>
+        </div>
+        <div class="relative rounded-sm overflow-hidden group">
+            <img src="assets/electronic.jpg" class="w-full h-full ">
+            <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition">Consumer electronics</a>
+        </div>
+        <div class="relative rounded-sm overflow-hidden group">
+            <img src="assets/book.jpeg" class="w-full h-full ">
+            <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition">Books, movies and music</a>
+        </div>
+        <div class="relative rounded-sm overflow-hidden group">
+            <img src="assets/fast-fashion.jpeg" class="w-full h-full ">
+            <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition">Clothing and Shoes</a>
+        </div>
+        <div class="relative rounded-sm overflow-hidden group">
+            <img src="assets/main-qimg.jfif" class="w-full h-full ">
+            <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition">Personal care and beauty</a>
+        </div>
+        <div class="relative rounded-sm overflow-hidden group">
+            <img src="assets/Furniture.jpg" class="w-full h-full ">
+            <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition">Furniture and decor</a>
+        </div>   
+    </div>
+</div>
+
+<div class="container pb-16">
+    <h2 class="text-3xl font-semibold text-gray-800 uppercase mb-6">popular products</h2>
+    <div class="grid grid-cols-4 gap-6">
+        <div class="bg-white shadow rounded overflow-hidden group">
+            <div class="relative">
+                <img src="assets/accessories.jpg" class="w-full">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                    <a href="#" class="text-white text-lg w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#" class="text-white text-lg w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="pt-3 pb-3 px-4">
+                <a href="#">
+                    <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">Product name</h4>
+                </a>
+                <div class="flex items-baseline mb-1 space-x-2">
+                    <p class="text-xl text-primary font-semibold">20.00 $</p>
+                    <p class="text-sm text-gray-400 line-through">50.00 $</p>
+                </div>
+                <div class="flex items-center">
+                    <!-- NgFor let i for rating-->
+                    <div class="flex gap-1 text-sm text-yellow-400">
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                    </div>
+                    <div class="text-xs text-gray-500 ml-3">(2/5)</div>
+                </div>
+            </div>
+            <a href="#" class="block w-full py-1 text-center font-semibold text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add to cart</a>
+        </div>
+
+        <div class="bg-white shadow rounded overflow-hidden group">
+            <div class="relative">
+                <img src="assets/accessories.jpg" class="w-full">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                    <a href="#" class="text-white text-lg w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#" class="text-white text-lg w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="pt-3 pb-3 px-4">
+                <a href="#">
+                    <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">Product name</h4>
+                </a>
+                <div class="flex items-baseline mb-1 space-x-2">
+                    <p class="text-xl text-primary font-semibold">20.00 $</p>
+                    <p class="text-sm text-gray-400 line-through">50.00 $</p>
+                </div>
+                <div class="flex items-center">
+                    <!-- NgFor let i for rating-->
+                    <div class="flex gap-1 text-sm text-yellow-400">
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                    </div>
+                    <div class="text-xs text-gray-500 ml-3">(2/5)</div>
+                </div>
+            </div>
+            <a href="#" class="block w-full py-1 text-center font-semibold text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add to cart</a>
+
+        </div>
+
+        <div class="bg-white shadow rounded overflow-hidden group">
+            <div class="relative">
+                <img src="assets/accessories.jpg" class="w-full">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                    <a href="#" class="text-white text-lg w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#" class="text-white text-lg w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="pt-3 pb-3 px-4">
+                <a href="#">
+                    <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">Product name</h4>
+                </a>
+                <div class="flex items-baseline mb-1 space-x-2">
+                    <p class="text-xl text-primary font-semibold">20.00 $</p>
+                    <p class="text-sm text-gray-400 line-through">50.00 $</p>
+                </div>
+                <div class="flex items-center">
+                    <!-- NgFor let i for rating-->
+                    <div class="flex gap-1 text-sm text-yellow-400">
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                    </div>
+                    <div class="text-xs text-gray-500 ml-3">(2/5)</div>
+                </div>
+            </div>
+            <a href="#" class="block w-full py-1 text-center font-semibold text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add to cart</a>
+
+        </div>
+
+        <div class="bg-white shadow rounded overflow-hidden group">
+            <div class="relative">
+                <img src="assets/accessories.jpg" class="w-full">
+                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                    <a href="#" class="text-white text-lg w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="#" class="text-white text-lg w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition">
+                        <i class="far fa-heart"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="pt-3 pb-3 px-4">
+                <a href="#">
+                    <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">Product name</h4>
+                </a>
+                <div class="flex items-baseline mb-1 space-x-2">
+                    <p class="text-xl text-primary font-semibold">20.00 $</p>
+                    <p class="text-sm text-gray-400 line-through">50.00 $</p>
+                </div>
+                <div class="flex items-center">
+                    <!-- NgFor let i for rating-->
+                    <div class="flex gap-1 text-sm text-yellow-400">
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                    </div>
+                    <div class="text-xs text-gray-500 ml-3">(2/5)</div>
+                </div>
+            </div>
+            <a href="#" class="block w-full py-1 text-center font-semibold text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">Add to cart</a>
+
+        </div>
+
+    </div>
 </div>
