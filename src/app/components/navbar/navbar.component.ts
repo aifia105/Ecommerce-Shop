@@ -13,13 +13,13 @@ export class NavbarComponent {
     {name : "Consumer electronics",
 
   },
-    {name : "Books, movies, music, and games",
+    {name : "Books, movies and music ",
 
   },
     {name : "Clothing and Shoes",
 
   },
-    {name : "Health and personal care and beauty",
+    {name : "Personal care and beauty",
  
   },
     {name : "Furniture and decor",

@@ -31,3 +31,9 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+ 
+  @layer components{
+    .size-selector input:checked + label{
+      @apply bg-primary text-white;
+    }
+  }

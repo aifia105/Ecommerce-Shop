@@ -1,0 +1,127 @@
+<div class="container py-4 flex items-center gap-3">
+ <a routerLink="/" class="text-primary text-base">
+    <i class="fas fa-home"></i>
+ </a>
+ <span class="text-sm text-gray-400">
+    <i class="fas fa-chevron-right"></i>
+ </span>
+ <p class="text-gray-600 font-medium">Shop</p>
+</div>
+
+<!-- filter side bar  -->
+<div class="container grid grid-cols-4 gap-6 pt-4 pb-16 items-start">
+    <div class="col-span-1 bg-white px-4 pb-6 shadow rounded overflow-hidden">
+        <div class="divide-y divide-gray-200 space-y-5">
+            <!-- categories -->
+            <div class="pt-2">
+                <h3 class="text-xl text-gray-800 mb-3 uppercase font-semibold">categories</h3>
+                <div class="space-y-2">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cat-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="cat-1" class="text-gray-600 ml-3 cursor-pointer">Accessories</label>
+                        <div class="ml-auto text-gray-600 text-sm">(2)</div>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cat-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="cat-1" class="text-gray-600 ml-3 cursor-pointer">Electronics</label>
+                        <div class="ml-auto text-gray-600 text-sm">(2)</div>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cat-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="cat-1" class="text-gray-600 ml-3 cursor-pointer">Personal care </label>
+                        <div class="ml-auto text-gray-600 text-sm">(2)</div>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cat-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="cat-1" class="text-gray-600 ml-3 cursor-pointer">Clothing and Shoes</label>
+                        <div class="ml-auto text-gray-600 text-sm">(2)</div>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cat-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="cat-1" class="text-gray-600 ml-3 cursor-pointer">Books</label>
+                        <div class="ml-auto text-gray-600 text-sm">(2)</div>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cat-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="cat-1" class="text-gray-600 ml-3 cursor-pointer">Furniture and decor</label>
+                        <div class="ml-auto text-gray-600 text-sm">(2)</div>
+                    </div>
+                </div>
+            </div>
+            <!-- brands -->
+
+            <div class="pt-4">
+                <h3 class="text-xl text-gray-800 mb-3 uppercase font-semibold">popular brands</h3>
+                <div class="space-y-2">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cat-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="cat-1" class="text-gray-600 ml-3 cursor-pointer">Apple</label>
+                        <div class="ml-auto text-gray-600 text-sm">(2)</div>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cat-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="cat-1" class="text-gray-600 ml-3 cursor-pointer">Nike</label>
+                        <div class="ml-auto text-gray-600 text-sm">(2)</div>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cat-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="cat-1" class="text-gray-600 ml-3 cursor-pointer">Adidas</label>
+                        <div class="ml-auto text-gray-600 text-sm">(2)</div>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cat-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="cat-1" class="text-gray-600 ml-3 cursor-pointer">HP</label>
+                        <div class="ml-auto text-gray-600 text-sm">(2)</div>
+                    </div>
+
+                    <div class="flex items-center">
+                        <input type="checkbox" id="cat-1" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
+                        <label for="cat-1" class="text-gray-600 ml-3 cursor-pointer">IKEA</label>
+                        <div class="ml-auto text-gray-600 text-sm">(2)</div>
+                    </div>
+                </div>
+            </div>
+            <!-- price filter -->
+            <div class="pt-4">
+                <h3 class="text-xl text-gray-800 mb-3 uppercase font-semibold">Price</h3>
+                <div class="mt-4 flex items-center">
+                    <input type="text" class="w-full border-gray-300 focus:border-primary focus:ring-0 px-3 py-1 text-gray-600 text-sm shadow-sm rounded" placeholder="Min">
+                    <span class="mx-3 text-gray-500 font-bold">-</span>
+                    <input type="text" class="w-full border-gray-300 focus:border-primary focus:ring-0 px-3 py-1 text-gray-600 text-sm shadow-sm rounded" placeholder="Max">
+                </div>
+            </div>
+            <!-- size filter -->
+            <div class="pt-4">
+                <h3 class="text-xl text-gray-800 mb-3 uppercase font-semibold">Size</h3>
+                <div class="flex items-center gap-2 pl-14">
+                    <div class="size-selector">
+                        <input type="radio" name="size" class="hidden" id="size-s">
+                        <label for="size-s" class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600">S</label>
+                    </div>
+                    <div class="size-selector">
+                        <input type="radio" name="size" class="hidden" id="size-m">
+                        <label for="size-m" class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600">M</label>
+                    </div>
+                    <div class="size-selector">
+                        <input type="radio" name="size" class="hidden" id="size-l">
+                        <label for="size-l" class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600">L</label>
+                    </div>
+                    <div class="size-selector">
+                        <input type="radio" name="size" class="hidden" id="size-xl">
+                        <label for="size-xl" class="text-xs border border-gray-200 rounded-sm h-6 w-6 flex items-center justify-center cursor-pointer shadow-sm text-gray-600">XL</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- products list -->

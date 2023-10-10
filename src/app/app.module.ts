@@ -7,6 +7,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ShopListComponent } from './components/shop-list/shop-list.component';
+import { ProductDetailComponent } from './components/shop-list/product-detail/product-detail.component';
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     FooterComponent,
     HeroComponent,
     NavbarComponent,
+    ShopListComponent,
+    ProductDetailComponent,
 
   ],
   imports: [
