@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Category } from 'src/app/models/category';
 
 @Component({
   selector: 'app-navbar',
@@ -6,23 +7,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  categories = [
-    {name : "Apparel and accessories",
+  categories : Category[] = [
+
+    {nameCategory : "Apparel and accessories",
 
   },
-    {name : "Consumer electronics",
+    {nameCategory : "Consumer electronics",
 
   },
-    {name : "Books, movies and music ",
+    {nameCategory : "Books, movies and music ",
 
   },
-    {name : "Clothing and Shoes",
+    {nameCategory : "Clothing and Shoes",
 
   },
-    {name : "Personal care and beauty",
+    {nameCategory : "Personal care and beauty",
  
   },
-    {name : "Furniture and decor",
+    {nameCategory : "Furniture and decor",
   }
 
   ];
