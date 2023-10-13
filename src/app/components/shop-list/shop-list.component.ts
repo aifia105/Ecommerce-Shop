@@ -34,6 +34,7 @@ export class ShopListComponent {
   
   products : Product[] = [
     {name : "iphone 7" ,
+    description :"some text",
     priceHt : 1000,
     tva : 1000,
     priceTTC : 2000,
@@ -43,6 +44,7 @@ export class ShopListComponent {
     CreationDate : "12/6/2000"
     },
     {name : "iphone 7" ,
+    description :"some text",
     priceHt : 1000,
     tva : 1000,
     priceTTC : 2000,
@@ -52,6 +54,7 @@ export class ShopListComponent {
     CreationDate : "12/6/2000"
     },
     {name : "iphone 7" ,
+    description :"some text",
     priceHt : 1000,
     tva : 1000,
     priceTTC : 2000,
@@ -61,6 +64,7 @@ export class ShopListComponent {
     CreationDate : "12/6/2000"
     },
     {name : "iphone 7" ,
+    description :"some text",
     priceHt : 1000,
     tva : 1000,
     priceTTC : 2000,
@@ -70,6 +74,7 @@ export class ShopListComponent {
     CreationDate : "12/6/2000"
     },
     {name : "iphone 7" ,
+    description :"some text",
     priceHt : 1000,
     tva : 1000,
     priceTTC : 2000,
@@ -79,6 +84,7 @@ export class ShopListComponent {
     CreationDate : "12/6/2000"
     },
     {name : "iphone 7" ,
+    description :"some text",
     priceHt : 1000,
     tva : 1000,
     priceTTC : 2000,
@@ -88,6 +94,7 @@ export class ShopListComponent {
     CreationDate : "12/6/2000"
     },
     {name : "iphone 7" ,
+    description :"some text",
     priceHt : 1000,
     tva : 1000,
     priceTTC : 2000,
