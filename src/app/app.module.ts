@@ -9,6 +9,12 @@ import { HeroComponent } from './components/hero/hero.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ShopListComponent } from './components/shop-list/shop-list.component';
 import { ProductDetailComponent } from './components/shop-list/product-detail/product-detail.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SearchComponent } from './components/search/search.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterComponent } from './components/auth/register/register.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 
 @NgModule({
@@ -20,6 +26,12 @@ import { ProductDetailComponent } from './components/shop-list/product-detail/pr
     NavbarComponent,
     ShopListComponent,
     ProductDetailComponent,
+    AboutUsComponent,
+    NotFoundComponent,
+    SearchComponent,
+    LoginComponent,
+    RegisterComponent,
+    ContactUsComponent,
 
   ],
   imports: [

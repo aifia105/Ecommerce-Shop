@@ -1,12 +1,10 @@
-import { Adress } from "./adresse";
+
 
 export interface User {
     id? : string;
-    name : string;
-    lastName : string;
+    fullName : string;
     birthday : Date;
-    adress : Adress ;
-    picture? : string;
+    adress : string ;
     email : string;
     password : string;
     phone : string;
