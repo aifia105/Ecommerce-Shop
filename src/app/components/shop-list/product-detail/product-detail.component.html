@@ -161,6 +161,9 @@
                     <div class="flex gap-1 text-sm text-yellow-400" *ngFor="let i of ">
                         <span><i class="fas fa-star"></i></span>
                     </div>
+                    <div class="flex gap-1 text-sm text-yellow-400" *ngFor="let i of [].constructor(product.avg_rating); let index = index" >
+                        <span><i class="fas fa-star"></i></span>
+                    </div>
                     <div class="text-xs text-gray-500 ml-3">{{"(" +product.avg_rating + "/5)" }}</div>
                 </div>
             </div>

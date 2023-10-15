@@ -105,16 +105,16 @@
                 <option>Latest product</option>
             </select>
             <div class="flex gap-2 ml-auto">
-                <div class="border border-primary w-10 h-9 flex items-center justify-center text-white bg-primary rounded cursor-pointer">
+                <button (click)="changeview(true)" (click)="swapColors()" [ngClass]="isSelected ? 'bg-primary border-primary text-white' : 'bg-white border-gray-300 text-gray-600'" class="border  w-10 h-9 flex items-center justify-center  rounded cursor-pointer">
                     <i class="fas fa-th"></i>
-                </div>
-                <div class="border border-gray-300 w-10 h-9 flex items-center justify-center text-gray-600  rounded cursor-pointer">
+                </button>
+                <button (click)="changeview(false)" (click)="swapColors()" [ngClass]="isSelected ? 'bg-white border-gray-300 text-gray-600' : 'bg-primary border-primary text-white'" class="border  w-10 h-9 flex items-center justify-center   rounded cursor-pointer">
                     <i class="fas fa-list"></i>
-                </div>
+                </button>
             </div>
         </div>
         <!-- list grid -->
-        <div class="grid grid-cols-3 gap-6">
+        <div *ngIf="grid" class="grid grid-cols-3 gap-6">
             <div class="bg-white shadow rounded overflow-hidden group" *ngFor="let product of products">
                 <div class="relative ">
                     <img [src]="product.pricture" class="w-full "  loading="lazy" priority>
@@ -129,7 +129,7 @@
                 </div>
                 <div class="pt-3 pb-3 px-4">
                     <a routerLink="/product-detail">
-                        <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">{{product.name}}</h4>
+                        <h4 class=" font-medium text-xl mb-2 text-gray-800 hover:text-primary transition">{{product.name}}</h4>
                     </a>
                     <div class="flex items-baseline mb-1 space-x-2">
                         <p class="text-xl text-primary font-semibold">{{product.priceTTC | currency}}</p>
@@ -137,7 +137,7 @@
                     </div>
                     <div class="flex items-center">
                         <!-- NgFor let i for rating-->
-                        <div class="flex gap-1 text-sm text-yellow-400" >
+                        <div class="flex gap-1 text-sm text-yellow-400" *ngFor="let i of [].constructor(product.avg_rating); let index = index" >
                             <span><i class="fas fa-star"></i></span>
                         </div>
                         <div class="text-xs text-gray-500 ml-3">{{"(" +product.avg_rating + "/5)" }}</div>
@@ -148,7 +148,30 @@
             </div>
         </div>
         <!-- product list tableu -->
-        
+        <div *ngIf="!grid">
+            <table class="w-full">
+                <tbody>
+                    <tr *ngFor="let product of products"  class="w-full border-b border-primary  transition-colors ">
+                        <td class="flex gap-x-4 items-center py-4 pl-10">
+                            <img [src]="product.pricture" alt="product_img" class="w-40 aspect[3/2] rounded-lg object-cover object-top border border-gray-200">
+                            <a routerLink="/product-detail">
+                                <h4 class=" font-medium font-roboto text-lg mb-2 text-gray-800 hover:text-primary transition">{{product.name}}</h4>
+                            </a>
+                        </td>
+                        <td class="font-medium text-center text-gray-600">{{product.priceTTC | currency}}</td>
+                        <td class=" text-center text-gray-600">
+                            <div class="flex items-center ml-14">
+                                <div class="flex gap-1 text-sm text-yellow-400" *ngFor="let i of [].constructor(product.avg_rating); let index = index" >
+                                    <span><i class="fas fa-star"></i></span>
+                                </div>
+                                <div class="text-xs text-gray-600 ">{{"(" +product.avg_rating + "/5)" }}</div>
+                            </div>
+                        </td>
+                        <td class="font-medium text-center text-gray-600">{{product.brand}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     
     </div>
 </div>

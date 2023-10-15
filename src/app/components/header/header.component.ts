@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,5 +7,10 @@ import { NgOptimizedImage } from '@angular/common'
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  constructor(private route: Router){}
+
+  search(){
+    this.route.navigate(['/search'])
+  }
 
 }

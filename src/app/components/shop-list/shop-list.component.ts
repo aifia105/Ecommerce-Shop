@@ -8,7 +8,8 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./shop-list.component.scss']
 })
 export class ShopListComponent {
-  grid : boolean = false;
+  grid : boolean = true;
+  isSelected: boolean = true;
 
   categories : Category[] = [
 
@@ -41,7 +42,8 @@ export class ShopListComponent {
     pricture : "assets/book.jpeg",
     category : {nameCategory :"Consumer electronics"} ,
     avg_rating : 4 ,
-    CreationDate : "12/6/2000"
+    CreationDate : "12/6/2000",
+    brand : "apple"
     },
     {name : "iphone 7" ,
     description :"some text",
@@ -51,7 +53,8 @@ export class ShopListComponent {
     pricture : "assets/book.jpeg",
     category : {nameCategory :"Consumer electronics"} ,
     avg_rating : 4 ,
-    CreationDate : "12/6/2000"
+    CreationDate : "12/6/2000",
+    brand : "apple"
     },
     {name : "iphone 7" ,
     description :"some text",
@@ -61,7 +64,8 @@ export class ShopListComponent {
     pricture : "assets/book.jpeg",
     category : {nameCategory :"Consumer electronics"} ,
     avg_rating : 4 ,
-    CreationDate : "12/6/2000"
+    CreationDate : "12/6/2000",
+    brand : "apple"
     },
     {name : "iphone 7" ,
     description :"some text",
@@ -71,7 +75,8 @@ export class ShopListComponent {
     pricture : "assets/book.jpeg",
     category : {nameCategory :"Consumer electronics"} ,
     avg_rating : 4 ,
-    CreationDate : "12/6/2000"
+    CreationDate : "12/6/2000",
+    brand : "apple"
     },
     {name : "iphone 7" ,
     description :"some text",
@@ -81,7 +86,8 @@ export class ShopListComponent {
     pricture : "assets/book.jpeg",
     category : {nameCategory :"Consumer electronics"} ,
     avg_rating : 4 ,
-    CreationDate : "12/6/2000"
+    CreationDate : "12/6/2000",
+    brand : "apple"
     },
     {name : "iphone 7" ,
     description :"some text",
@@ -91,7 +97,8 @@ export class ShopListComponent {
     pricture : "assets/book.jpeg",
     category : {nameCategory :"Consumer electronics"} ,
     avg_rating : 4 ,
-    CreationDate : "12/6/2000"
+    CreationDate : "12/6/2000",
+    brand : "apple"
     },
     {name : "iphone 7" ,
     description :"some text",
@@ -101,12 +108,16 @@ export class ShopListComponent {
     pricture : "assets/book.jpeg",
     category : {nameCategory :"Consumer electronics"} ,
     avg_rating : 4 ,
-    CreationDate : "12/6/2000"
+    CreationDate : "12/6/2000",
+    brand : "apple"
     },
 
   ];
   changeview(grid :boolean){
     this.grid = !this.grid;
+  }
+  swapColors() {
+    this.isSelected = !this.isSelected;
   }
 
 }

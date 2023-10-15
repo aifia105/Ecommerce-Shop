@@ -1,6 +1,6 @@
 <!-- hero section -->
 
-<div class="bg-cover bg-no-repeat bg-bottom  py-56 h-full" style="background-image: url(assets/home-page.jpg);" priority>
+<div class="bg-cover bg-no-repeat bg-top  py-56 h-full" style="background-image: url(assets/home-page.jpg);" priority>
     <div class="container text-white">
         <h1 class="text-6xl  font-bold mb-4 capitalize ">
             Shop 'Til You Drop
@@ -48,30 +48,10 @@
 <div class="container py-16">
     <h2 class="text-3xl font-semibold text-gray-800 uppercase mb-6">Shop by category</h2>
     <div class="grid grid-cols-3 gap-3">
-        <div class="relative rounded-sm overflow-hidden group">
-            <img src="assets/accessories.jpg" class="w-full h-full" loading="lazy" priority>
-            <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition">Apparel and accessories</a>
+        <div class="relative rounded-sm overflow-hidden group" *ngFor="let category of categorys">
+            <img [src]="category.image" class="w-full h-full" loading="lazy" priority>
+            <a routerLink="/search" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition">{{category.nameCategory}}</a>
         </div>
-        <div class="relative rounded-sm overflow-hidden group" >
-            <img src="assets/electronic.jpg" class="w-full h-full " loading="lazy" priority>
-            <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition">Consumer electronics</a>
-        </div>
-        <div class="relative rounded-sm overflow-hidden group">
-            <img src="assets/book.jpeg" class="w-full h-full " loading="lazy" priority>
-            <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition">Books, movies and music</a>
-        </div>
-        <div class="relative rounded-sm overflow-hidden group">
-            <img src="assets/fast-fashion.jpeg" class="w-full h-full " loading="lazy" priority>
-            <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition">Clothing and Shoes</a>
-        </div>
-        <div class="relative rounded-sm overflow-hidden group">
-            <img src="assets/main-qimg.jfif" class="w-full h-full " loading="lazy" priority>
-            <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition">Personal care and beauty</a>
-        </div>
-        <div class="relative rounded-sm overflow-hidden group">
-            <img src="assets/Furniture.jpg" class="w-full h-full " loading="lazy" priority>
-            <a href="#" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition">Furniture and decor</a>
-        </div>   
     </div>
 </div>
 <!-- popular products section  -->
@@ -101,7 +81,7 @@
                 </div>
                 <div class="flex items-center">
                     <!-- NgFor let i for rating-->
-                    <div class="flex gap-1 text-sm text-yellow-400" *ngFor="let i of ">
+                    <div class="flex gap-1 text-sm text-yellow-400" *ngFor="let i of [].constructor(product.avg_rating); let index = index" >
                         <span><i class="fas fa-star"></i></span>
                     </div>
                     <div class="text-xs text-gray-500 ml-3">{{"(" +product.avg_rating + "/5)" }}</div>
@@ -146,11 +126,10 @@
                 </div>
                 <div class="flex items-center">
                     <!-- NgFor let i for rating-->
-                    <div class="flex gap-1 text-sm text-yellow-400" >
+                    <div class="flex gap-1 text-sm text-yellow-400" *ngFor="let i of [].constructor(product.avg_rating); let index = index" >
                         <span><i class="fas fa-star"></i></span>
                     </div>
                     <div class="text-xs text-gray-500 ml-3">{{"(" +product.avg_rating + "/5)" }}</div>
-                </div>
             </div>
             <a href="#" class="block w-full py-1 text-center font-semibold text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">
                 <i class="fas fa-shopping-bag"></i> Add to cart

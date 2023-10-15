@@ -7,11 +7,11 @@
             </span>
             <span class="capitalize ml-2 text-gray-700">All categories</span>
 
-            <div class="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-300 invisible group-hover:visible">
+            <a routerLink="/search" class="absolute w-full left-0 top-full bg-white shadow-md py-3 divide-y divide-gray-300 divide-dashed opacity-0 group-hover:opacity-100 transition duration-300 invisible group-hover:visible">
                 <ul class="flex items-center px-2  py-3 hover:bg-gray-100 transition" *ngFor="let category of categories">
                     <li class="ml-2 text-gray-600 text-sm">{{category.nameCategory}}</li>
                 </ul>
-            </div>
+            </a>
         </div>
 
         <!-- navbar menu-->

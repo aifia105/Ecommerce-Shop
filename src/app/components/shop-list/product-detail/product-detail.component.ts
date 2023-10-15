@@ -23,7 +23,8 @@ export class ProductDetailComponent {
     pricture : "assets/book.jpeg",
     category : {nameCategory :"Consumer electronics"} ,
     avg_rating : 4 ,
-    CreationDate : "12/6/2000"
+    CreationDate : "12/6/2000",
+    brand : "apple"
     },
     {name : "iphone 7" ,
     description :"some text",
@@ -33,7 +34,8 @@ export class ProductDetailComponent {
     pricture : "assets/book.jpeg",
     category : {nameCategory :"Consumer electronics"} ,
     avg_rating : 4 ,
-    CreationDate : "12/6/2000"
+    CreationDate : "12/6/2000",
+    brand : "apple"
     },
     {name : "iphone 7" ,
     description :"some text",
@@ -43,7 +45,8 @@ export class ProductDetailComponent {
     pricture : "assets/book.jpeg",
     category : {nameCategory :"Consumer electronics"} ,
     avg_rating : 4 ,
-    CreationDate : "12/6/2000"
+    CreationDate : "12/6/2000",
+    brand : "apple"
     },
     {name : "iphone 7" ,
     description :"some text",
@@ -53,7 +56,8 @@ export class ProductDetailComponent {
     pricture : "assets/book.jpeg",
     category : {nameCategory :"Consumer electronics"} ,
     avg_rating : 4 ,
-    CreationDate : "12/6/2000"
+    CreationDate : "12/6/2000",
+    brand : "apple"
     }];
 
 }

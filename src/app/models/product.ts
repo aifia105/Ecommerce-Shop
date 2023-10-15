@@ -11,4 +11,5 @@ export interface Product {
     category : Category;
     avg_rating : number;
     CreationDate : string;
+    brand : string;
 }
