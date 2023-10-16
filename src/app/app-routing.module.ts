@@ -10,11 +10,16 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { SearchComponent } from './components/search/search.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { UserComponent } from './components/user/user.component';
+import { AccountManagementComponent } from './components/user/account-management/account-management.component';
 
 const routes: Routes = [
   {path: "", redirectTo: "hero" , pathMatch :"full"},
   {path: "hero", data: {breadcrumb:"Hero"} , component:HeroComponent},
   {path: "shop", data: {breadcrumb:"Shop"} , component:ShopListComponent},
+  {path: "user", data: {breadcrumb:"User"} , component:UserComponent, children: [
+    {path: "" , component:AccountManagementComponent, outlet: 'userOutlet'}
+  ]},
   {path: "product-detail", data: {breadcrumb:"ProductDetail"} , component:ProductDetailComponent},
   {path: "about-us", data: {breadcrumb:"AboutUs"} , component:AboutUsComponent},
   {path: "auth/login", data: {breadcrumb:"Login"} , component:LoginComponent},

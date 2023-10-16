@@ -15,6 +15,12 @@ import { SearchComponent } from './components/search/search.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { UserComponent } from './components/user/user.component';
+import { AccountManagementComponent } from './components/user/account-management/account-management.component';
+import { OrderHistoryComponent } from './components/user/order-history/order-history.component';
+import { PaymentComponent } from './components/user/payment/payment.component';
+import { CartComponent } from './components/cart/cart.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 
 @NgModule({
@@ -32,6 +38,12 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     LoginComponent,
     RegisterComponent,
     ContactUsComponent,
+    UserComponent,
+    AccountManagementComponent,
+    OrderHistoryComponent,
+    PaymentComponent,
+    CartComponent,
+    WishlistComponent,
 
   ],
   imports: [
