@@ -23,25 +23,25 @@
         </div>
         <div class="mt-6 bg-white shadow rounded p-4 divide-y divide-gray-200 space-y-4 text-gray-600">
             <div class="space-y-1 pl-8">
-                <a routerLink="/user"  class="relative hover:text-primary block font-semibold capitalize transition">
+                <a routerLink="account-management"   class="relative hover:text-primary block font-semibold capitalize transition">
                     <span class="absolute -left-8 top-0 text-base">
                         <i class="far fa-address-card"></i>
                     </span>
                     Manage account
                 </a>
-                <a href="" class="relative  hover:text-primary block font-medium capitalize transition">
+                <a routerLink="profile-information"  class="relative  hover:text-primary block font-medium capitalize transition">
                     <span class="absolute -left-8 top-0 text-base">
 
                     </span>
                     Profile information
                 </a>
-                <a href="" class="relative  hover:text-primary block font-medium capitalize transition">
+                <a routerLink="manage-address"  class="relative  hover:text-primary block font-medium capitalize transition">
                     <span class="absolute -left-8 top-0 text-base">
 
                     </span>
                     Manage Address
                 </a>
-                <a href="" class="relative  hover:text-primary block font-medium capitalize transition">
+                <a routerLink="change-password"  class="relative  hover:text-primary block font-medium capitalize transition">
                     <span class="absolute -left-8 top-0 text-base">
 
                     </span>
@@ -62,38 +62,22 @@
                     </span>
                     My Reviews
                 </a>
-                <a href="" class="relative  hover:text-primary block font-medium capitalize transition">
-                    <span class="absolute -left-8 top-0 text-base">
-
-                    </span>
-                    My Products
-                </a>
             </div>
 
             <div class="space-y-1 pl-8 pt-4">
-                <a href="" class="relative  hover:text-primary block font-semibold capitalize transition">
+                <a routerLink="payment" class="relative  hover:text-primary block font-semibold capitalize transition">
                     <span class="absolute -left-8 top-0 text-base">
                         <i class="fa-regular fa-credit-card"></i>
                     </span>
                    Payment
                 </a>
-                <a href="" class="relative  hover:text-primary block font-medium capitalize transition">
+                <a routerLink="manage-card" class="relative  hover:text-primary block font-medium capitalize transition">
                     <span class="absolute -left-8 top-0 text-base">
 
                     </span>
                     Manage card
                 </a>
             </div>
-
-            <div class="space-y-1 pl-8 pt-4">
-                <a href="" class="relative  hover:text-primary block font-semibold capitalize transition">
-                    <span class="absolute -left-8 top-0 text-base">
-                        <i class="fa-regular fa-heart"></i>
-                    </span>
-                   My Wishlist
-                </a>
-            </div>
-
             <div class="space-y-1 pl-8 pt-4">
                 <a href="" class="relative  hover:text-primary block font-semibold capitalize transition">
                     <span class="absolute -left-8 top-0 text-base">
@@ -108,8 +92,11 @@
 
     <!-- acc info -->
     <div class="col-span-9">
+       
 
-        <router-outlet name="userOutlet"></router-outlet>
+
+            <router-outlet ></router-outlet>
+
     </div>
 
 </div>

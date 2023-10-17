@@ -6,8 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent {
-  isSelected: boolean = true;
-  swapColors() {
-    this.isSelected = !this.isSelected;
-  }
+ 
 }

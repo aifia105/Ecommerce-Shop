@@ -1,1 +1,30 @@
-<p>payment works!</p>
+<div class="col-span-9 shadow rounded  px-6 pt-5 pb-7">
+    <p class="text-lg font-semibold capitalize mb-4">My Credits Cards:</p>
+
+
+    <div class="grid grid-rows gap-4">
+        <div class=" bg-white px-4  pb-4 border-b" *ngFor="let card of cards">
+            <div class="space-y-1 flex justify-between">
+                <p class="text-gray-700">{{card.cardNumber}}</p>
+                <p class="text-gray-800">{{card.cardHolderName}}</p>
+                <p class="text-gray-800">{{card.experationMonth}}</p>
+                <p class="text-gray-800">{{card.experationYear}}</p>
+                <p class="text-gray-800">{{card.cvv}}</p>
+                <div class="flex justify-end gap-3 mt-2 text-primary">
+                    <a href="">
+                        <i class="fa-regular fa-trash-can"></i>
+                    </a>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+
+</div>
+
+
+
+
+
+
+

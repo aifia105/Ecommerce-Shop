@@ -15,7 +15,7 @@
                 <tr *ngFor="let product of products"  class="w-full border-b border-primary  transition-colors ">
                     <td class="flex gap-x-4 items-center py-4 pl-10">
                         <img [src]="product.pricture" alt="product_img" class="w-40 aspect[3/2] rounded-lg object-cover object-top border border-gray-200">
-                        <span class="text-lg font-medium text-gray-600"> {{product.name}} </span>
+                        <a routerLink="/product-detail" class="text-lg font-medium text-gray-600"> {{product.name}} </a>
                     </td>
                     <td class="font-medium text-center text-gray-600">{{product.priceTTC | currency}}</td>
                     <td class=" text-center text-gray-600">

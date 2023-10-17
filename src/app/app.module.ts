@@ -21,6 +21,10 @@ import { OrderHistoryComponent } from './components/user/order-history/order-his
 import { PaymentComponent } from './components/user/payment/payment.component';
 import { CartComponent } from './components/cart/cart.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { ProfileInformationComponent } from './components/user/profile-information/profile-information.component';
+import { ManageAddressComponent } from './components/user/manage-address/manage-address.component';
+import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
+import { ManageCardComponent } from './components/user/manage-card/manage-card.component';
 
 
 @NgModule({
@@ -44,6 +48,10 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
     PaymentComponent,
     CartComponent,
     WishlistComponent,
+    ProfileInformationComponent,
+    ManageAddressComponent,
+    ChangePasswordComponent,
+    ManageCardComponent,
 
   ],
   imports: [
