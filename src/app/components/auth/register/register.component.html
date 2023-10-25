@@ -5,36 +5,36 @@
         <p class="text-gray-600 mb-6 text-sm">
             Register here if you don't have account
         </p>
-        <form action="">
+        <form  [formGroup]="form" (ngSubmit)="onSubmit()">
            <div class="space-y-4">
             <div>
                 <label for="name" class="text-gray-600 mb-2 block">Full Name:</label>
-                <input type="text" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Enter your first name">
+                <input type="text" formControlName="fullname" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Enter your first name">
             </div>
             
             <div>
                 <label for="Address" class="text-gray-600 mb-2 block">Address:</label>
-                <input type="text" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Enter your address">
+                <input type="text" formControlName="address" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Enter your address">
             </div>
             <div>
                 <label for="phone" class="text-gray-600 mb-2 block">Phone Number:</label>
-                <input type="tel" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Phone number">
+                <input type="tel" formControlName="phone" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Phone number">
             </div>
             <div>
                 <label for="birthday" class="text-gray-600 mb-2 block">Birthday:</label>
-                <input type="date" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400">
+                <input type="date" formControlName="birthday" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400">
             </div>
             <div>
                 <label for="email" class="text-gray-600 mb-2 block">Email Adress:</label>
-                <input type="email" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="example@gmail.com">
+                <input type="email" formControlName="email" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="example@gmail.com">
             </div>
             <div>
                 <label for="password" class="text-gray-600 mb-2 block">Password:</label>
-                <input type="password" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Type password">
+                <input type="password" formControlName="password" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Type password">
             </div>
             <div>
                 <label for="confirmpassword" class="text-gray-600 mb-2 block">Confirm Password:</label>
-                <input type="password" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Confirm your password">
+                <input type="password" formControlName="confirmpassword" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Confirm your password">
             </div>
             
            </div>
@@ -46,7 +46,7 @@
             <a href="#" class="text-primary">terms & conditions</a>
            </div>
            <div class="mt-4">
-            <button type="submit" class="block w-full py-2 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition uppercase  font-semibold">create account</button>
+            <button type="submit" class="block w-full py-2 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition uppercase  font-semibold" >create account</button>
            </div>
         </form>
 

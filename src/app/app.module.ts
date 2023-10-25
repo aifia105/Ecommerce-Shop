@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,12 @@ import { ProfileInformationComponent } from './components/user/profile-informati
 import { ManageAddressComponent } from './components/user/manage-address/manage-address.component';
 import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
 import { ManageCardComponent } from './components/user/manage-card/manage-card.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule, provideStore } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { authFeatureKey, authReducer } from './components/auth/store/reducers';
+import * as authEffects from'./components/auth/store/effect'
 
 
 @NgModule({
@@ -56,7 +62,11 @@ import { ManageCardComponent } from './components/user/manage-card/manage-card.c
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    StoreModule.forRoot({authFeatureKey: authReducer}),
+    EffectsModule.forRoot([authEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode(), autoPause:true, trace: false, traceLimit: 75 }),
   ],
   providers: [],
   bootstrap: [AppComponent]
