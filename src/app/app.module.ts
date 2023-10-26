@@ -31,6 +31,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { authFeatureKey, authReducer } from './components/auth/store/reducers';
 import * as authEffects from'./components/auth/store/effect'
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -63,6 +64,7 @@ import * as authEffects from'./components/auth/store/effect'
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     ReactiveFormsModule,
     StoreModule.forRoot({authFeatureKey: authReducer}),
     EffectsModule.forRoot([authEffects]),

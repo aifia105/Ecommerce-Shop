@@ -5,21 +5,26 @@ import { authActions } from "./actions";
 import { catchError, map, of, switchMap } from "rxjs";
 import { User } from "src/app/models/user";
 import { HttpErrorResponse } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 export const registerEffect = createEffect((
     actions$ = inject(Actions),
-    authService = inject(AuthService)
+    authService = inject(AuthService),
+    route = inject(Router)
 ) => {
     return actions$.pipe(
         ofType(authActions.register),
         switchMap(({request}) => {
             return authService.register(request).pipe(
                 map((user: User) => {
+                    route.navigate(['hero']) 
                     return authActions.registerSuccess({user})
                 }),
                 catchError((errorResponse: HttpErrorResponse) => {
+                    
                     return of(authActions.registerFailure({
-                        erros: errorResponse.error.erros,
+                        erros: {error :  errorResponse.message},
+                        
                     }))
                 })
             )
