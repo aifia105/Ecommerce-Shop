@@ -5,22 +5,29 @@
         <p class="text-gray-600 mb-6 text-sm">
             Login if you are a new customer
         </p>
-        <form action="">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
            <div class="space-y-4">
             <div>
                 <label for="email" class="text-gray-600 mb-2 block">Email adress:</label>
-                <input type="email" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Enter your email adress">
+                <input type="email" formControlName="email" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Enter your email adress"
+                [ngClass]="{'border-red-500':form.get('email')?.invalid && 
+                (form.get('email')?.dirty || form.get('email')?.touched || isSubmitted)}"
+                >
+                <span *ngIf="form.get('email')?.hasError('required') && 
+                (form.get('email')?.dirty || form.get('email')?.touched || isSubmitted)" class="text-sm text-red-400">Email address is required !</span>
             </div>
             <div>
                 <label for="password" class="text-gray-600 mb-2 block">Password:</label>
-                <input type="password" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Enter your password">
+                <input type="password" formControlName="password" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Enter your password"
+                [ngClass]="{'border-red-500':form.get('password')?.invalid && 
+                (form.get('password')?.dirty || form.get('password')?.touched || isSubmitted)}"
+                >
+                <span *ngIf="form.get('password')?.hasError('required') && 
+                (form.get('password')?.dirty || form.get('password')?.touched || isSubmitted)" class="text-sm text-red-400">Password is required !</span>
             </div>
            </div>
-           <div class="flex items-center justify-between mt-6">
-            <div class="flex items-center">
-                <input type="checkbox" id="agreement" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
-                <label for="agreement" class="text-gray-600 ml-3 cursor-pointer select-none ">Remember me</label>
-            </div>
+           <div class="flex items-center justify-end mt-6">
+
             <a href="#" class="text-primary">Forgot password</a>
            </div>
            <div class="mt-4">

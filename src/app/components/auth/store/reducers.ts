@@ -5,7 +5,8 @@ import { authActions } from "./actions";
 const initialState: AuthStateInterface ={
     currentUser : undefined,
     validatonError : null,
-    status : 'pending'
+    status : 'pending',
+    isLogin : false
 
 } ;
 
@@ -14,8 +15,11 @@ const authFeature = createFeature({
     reducer: createReducer(
         initialState,
         on(authActions.register, (state)=> ({...state, status:'submitting', validatonError: null})),
-        on(authActions.registerSuccess, (state, action)=> ({...state, status:'loading', currentUser: action.user})),
-        on(authActions.registerFailure, (state, action)=> ({...state, status:'error', validatonError: action.erros}))
+        on(authActions.registerSuccess, (state, action)=> ({...state, status:'success', currentUser: action.user, isLogin : true})),
+        on(authActions.registerFailure, (state, action)=> ({...state, status:'error', validatonError: action.erros})),
+        on(authActions.login,(state)=> ({...state,status:'submitting', validatonError: null})),
+        on(authActions.loginSuccess, (state, action)=> ({...state, status:'success', currentUser: action.user, isLogin : true})),
+        on(authActions.loginFailure, (state, action)=> ({...state, status:'error', validatonError: action.erros})),
     )
 })
 

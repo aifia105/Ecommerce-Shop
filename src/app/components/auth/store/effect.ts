@@ -17,7 +17,7 @@ export const registerEffect = createEffect((
         switchMap(({request}) => {
             return authService.register(request).pipe(
                 map((user: User) => {
-                    route.navigate(['hero']) 
+                    route.navigate(['hero']);
                     return authActions.registerSuccess({user})
                 }),
                 catchError((errorResponse: HttpErrorResponse) => {
@@ -31,3 +31,26 @@ export const registerEffect = createEffect((
         })
     )
 }, {functional: true} )
+
+export const loginEffect = createEffect((
+    actions$ = inject(Actions),
+    authService = inject(AuthService),
+    route = inject(Router)
+)=>{
+    return actions$.pipe(
+        ofType(authActions.login),
+        switchMap(({request})=> {
+            return authService.login(request).pipe(
+                map((user: User) => {
+                    route.navigate(['hero']);
+                    return authActions.loginSuccess({user})
+                }),
+                catchError((errorResponse: HttpErrorResponse) =>{
+                    return of(authActions.loginFailure({
+                        erros: {error :  errorResponse.message},
+                    }))
+                })
+            )
+        })
+    )
+},{functional:true})

@@ -30,7 +30,6 @@ export class RegisterComponent {
   constructor(private fb:FormBuilder, private store: Store ){}
 
   onSubmit(){
-    this.isSubmitted = true
     console.log(this.form.invalid);
     console.log('form', this.form.getRawValue());
     if(this.form.valid){

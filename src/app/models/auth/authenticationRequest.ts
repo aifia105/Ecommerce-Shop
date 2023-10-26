@@ -1,5 +1,5 @@
 
-export interface Authentification {
-    login: string;
+export interface AuthentificationRequest {
+    email: string;
     password: string;
 }

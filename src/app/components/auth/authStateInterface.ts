@@ -5,4 +5,5 @@ export interface AuthStateInterface{
     currentUser : User | null | undefined
     validatonError : BackendErrors | null
     status: string ;
+    isLogin: boolean;
 }
