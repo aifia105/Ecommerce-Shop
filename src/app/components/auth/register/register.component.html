@@ -1,97 +1,245 @@
 <!-- login -->
 <div class="container pt-6 pb-16">
-    <div class="max-w-lg mx-auto shadow px-6 py-7 rounded overflow-hidden">
-        <p class="text-2xl  font-semibold mb-1">Create an account</p>
-        <p class="text-gray-600 mb-6 text-sm">
-            Register here if you don't have account
-        </p>
-        <form  [formGroup]="form" (ngSubmit)="onSubmit()">
-           <div class="space-y-4">
-            <div>
-                <label for="name" class="text-gray-600 mb-2 block">Full Name:</label>
-                <input type="text" formControlName="fullname" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Enter your first name"
-                [ngClass]="{'border-red-500':form.get('fullname')?.invalid && 
-                (form.get('fullname')?.dirty || form.get('fullname')?.touched || isSubmitted)}"
-                >
-                <span *ngIf="form.get('fullname')?.hasError('required') && 
-                (form.get('fullname')?.dirty || form.get('fullname')?.touched || isSubmitted)" class="text-sm text-red-400">Full name is required !</span>
-            </div>
-            
-            <div>
-                <label for="Address" class="text-gray-600 mb-2 block">Address:</label>
-                <input type="text" formControlName="address" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Enter your address"
-                [ngClass]="{'border-red-500':form.get('address')?.invalid && 
-                (form.get('address')?.dirty || form.get('address')?.touched || isSubmitted)}"
-                >
-                <span *ngIf="form.get('address')?.hasError('required') && 
-                (form.get('address')?.dirty || form.get('address')?.touched || isSubmitted)" class="text-sm text-red-400">Adress is required !</span>
-            </div>
-            <div>
-                <label for="phone" class="text-gray-600 mb-2 block">Phone Number:</label>
-                <input type="tel" formControlName="phone" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Phone number"
-                [ngClass]="{'border-red-500':form.get('phone')?.invalid && 
-                (form.get('phone')?.dirty || form.get('phone')?.touched || isSubmitted)}"
-                >
-                <span *ngIf="form.get('phone')?.hasError('required') && 
-                (form.get('phone')?.dirty || form.get('phone')?.touched || isSubmitted)" class="text-sm text-red-400">Phone number is required !</span>
-            </div>
-            <div>
-                <label for="birthday" class="text-gray-600 mb-2 block">Birthday:</label>
-                <input type="date" formControlName="birthday" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
-                [ngClass]="{'border-red-500':form.get('birthday')?.invalid && 
-                (form.get('birthday')?.dirty || form.get('birthday')?.touched || isSubmitted)}"
-                >
-                <span *ngIf="form.get('birthday')?.hasError('required') && 
-                (form.get('birthday')?.dirty || form.get('birthday')?.touched || isSubmitted)" class="text-sm text-red-400">Birthday is required !</span>
-            </div>
-            <div>
-                <label for="email" class="text-gray-600 mb-2 block">Email Adress:</label>
-                <input type="email" formControlName="email" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="example@gmail.com"
-                [ngClass]="{'border-red-500':form.get('email')?.invalid && 
-                (form.get('email')?.dirty || form.get('email')?.touched || isSubmitted)}">
-                <span *ngIf="form.get('email')?.hasError('required') && 
-                (form.get('email')?.dirty || form.get('email')?.touched || isSubmitted)" class="text-sm text-red-400">Email adress invalid !</span>
-            </div>
-            <div>
-                <label for="password" class="text-gray-600 mb-2 block">Password:</label>
-                <input type="password" formControlName="password" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Type password"
-                [ngClass]="{'border-red-500':form.get('password')?.invalid && 
-                (form.get('password')?.dirty || form.get('password')?.touched || isSubmitted)}"
-                >
-                <span *ngIf="form.get('password')?.invalid && 
-                (form.get('password')?.dirty || form.get('password')?.touched || isSubmitted)" class="text-sm text-red-400">Password invalid !</span>
-            </div>
-            <div>
-                <label for="confirmpassword" class="text-gray-600 mb-2 block">Confirm Password:</label>
-                <input type="password" formControlName="confirmpassword" class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Confirm your password"
-                [ngClass]="{'border-red-500':form.get('confirmpassword')?.invalid && 
-                (form.get('confirmpassword')?.dirty || form.get('confirmpassword')?.touched || isSubmitted)}"
-                >
-            </div>
-            
-           </div>
-           <div class="flex items-center gap-2 mt-6">
-            <div class="flex items-center">
-                <input type="checkbox" id="agreement" class="text-primary focus:ring-0 rounded-sm cursor-pointer">
-                <label for="agreement" class="text-gray-600 ml-3 cursor-pointer select-none ">I have read and agree to the </label>
-            </div>
-            <a href="#" class="text-primary">terms & conditions</a>
-           </div>
-           <div class="mt-4">
-            <button type="submit" class="block w-full py-2 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition uppercase  font-semibold" >create account</button>
-           </div>
-        </form>
-
-        <div class="mt-6 flex justify-center relative">
-            <div class="text-gray-600 uppercase px-3 bg-white z-10 relative ">Or singup in with</div>
-            <div class="absolute left-0 top-3 w-full border-b-2 border-gray-200"></div>
+  <div class="max-w-lg mx-auto shadow px-6 py-7 rounded overflow-hidden">
+    <p class="text-2xl font-semibold mb-1">Create an account</p>
+    <p class="text-gray-600 mb-6 text-sm">
+      Register here if you don't have account
+    </p>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="space-y-4">
+        <div>
+          <label for="name" class="text-gray-600 mb-2 block">Full Name:</label>
+          <input
+            type="text"
+            formControlName="fullName"
+            class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
+            placeholder="Enter your first name"
+            [ngClass]="{
+              'border-red-500':
+                form.get('fullName')?.invalid &&
+                (form.get('fullName')?.dirty ||
+                  form.get('fullName')?.touched ||
+                  isSubmitted)
+            }"
+          />
+          <span
+            *ngIf="
+              form.get('fullName')?.hasError('required') &&
+              (form.get('fullName')?.dirty ||
+                form.get('fullName')?.touched ||
+                isSubmitted)
+            "
+            class="text-sm text-red-400"
+            >Full name is required !</span
+          >
         </div>
-        <div class="flex mt-4 gap-4">
-            <a href="" class="w-1/2 py-2 text-center text-white bg-blue-800 rounded uppercase font-semibold text-sm hover:bg-blue-700">facebook</a>
-            <a href="" class="w-1/2 py-2 text-center text-white bg-red-700 rounded uppercase font-semibold text-sm hover:bg-red-600">google</a>
+
+        <div>
+          <label for="Address" class="text-gray-600 mb-2 block">Address:</label>
+          <input
+            type="text"
+            formControlName="address"
+            class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
+            placeholder="Enter your address"
+            [ngClass]="{
+              'border-red-500':
+                form.get('address')?.invalid &&
+                (form.get('address')?.dirty ||
+                  form.get('address')?.touched ||
+                  isSubmitted)
+            }"
+          />
+          <span
+            *ngIf="
+              form.get('address')?.hasError('required') &&
+              (form.get('address')?.dirty ||
+                form.get('address')?.touched ||
+                isSubmitted)
+            "
+            class="text-sm text-red-400"
+            >Adress is required !</span
+          >
         </div>
         <div>
-            <p class="mt-4 text-gray-600 text-center">Already have an account? <a routerLink="/auth/login" class="text-primary">Login now</a></p>
+          <label for="phone" class="text-gray-600 mb-2 block"
+            >Phone Number:</label
+          >
+          <input
+            type="tel"
+            formControlName="phone"
+            class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
+            placeholder="Phone number"
+            [ngClass]="{
+              'border-red-500':
+                form.get('phone')?.invalid &&
+                (form.get('phone')?.dirty ||
+                  form.get('phone')?.touched ||
+                  isSubmitted)
+            }"
+          />
+          <span
+            *ngIf="
+              form.get('phone')?.hasError('required') &&
+              (form.get('phone')?.dirty ||
+                form.get('phone')?.touched ||
+                isSubmitted)
+            "
+            class="text-sm text-red-400"
+            >Phone number is required !</span
+          >
         </div>
+        <div>
+          <label for="birthday" class="text-gray-600 mb-2 block"
+            >Birthday:</label
+          >
+          <input
+            type="date"
+            formControlName="birthday"
+            class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
+            [ngClass]="{
+              'border-red-500':
+                form.get('birthday')?.invalid &&
+                (form.get('birthday')?.dirty ||
+                  form.get('birthday')?.touched ||
+                  isSubmitted)
+            }"
+          />
+          <span
+            *ngIf="
+              form.get('birthday')?.hasError('required') &&
+              (form.get('birthday')?.dirty ||
+                form.get('birthday')?.touched ||
+                isSubmitted)
+            "
+            class="text-sm text-red-400"
+            >Birthday is required !</span
+          >
+        </div>
+        <div>
+          <label for="email" class="text-gray-600 mb-2 block"
+            >Email Adress:</label
+          >
+          <input
+            type="email"
+            formControlName="email"
+            class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
+            placeholder="example@gmail.com"
+            [ngClass]="{
+              'border-red-500':
+                form.get('email')?.invalid &&
+                (form.get('email')?.dirty ||
+                  form.get('email')?.touched ||
+                  isSubmitted)
+            }"
+          />
+          <span
+            *ngIf="
+              form.get('email')?.hasError('required') &&
+              (form.get('email')?.dirty ||
+                form.get('email')?.touched ||
+                isSubmitted)
+            "
+            class="text-sm text-red-400"
+            >Email adress invalid !</span
+          >
+        </div>
+        <div>
+          <label for="password" class="text-gray-600 mb-2 block"
+            >Password:</label
+          >
+          <input
+            type="password"
+            formControlName="password"
+            class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
+            placeholder="Type password"
+            [ngClass]="{
+              'border-red-500':
+                form.get('password')?.invalid &&
+                (form.get('password')?.dirty ||
+                  form.get('password')?.touched ||
+                  isSubmitted)
+            }"
+          />
+          <span
+            *ngIf="
+              form.get('password')?.invalid &&
+              (form.get('password')?.dirty ||
+                form.get('password')?.touched ||
+                isSubmitted)
+            "
+            class="text-sm text-red-400"
+            >Password invalid !</span
+          >
+        </div>
+        <div>
+          <label for="confirmpassword" class="text-gray-600 mb-2 block"
+            >Confirm Password:</label
+          >
+          <input
+            type="password"
+            formControlName="confirmpassword"
+            class="block w-full border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400"
+            placeholder="Confirm your password"
+            [ngClass]="{
+              'border-red-500':
+                form.get('confirmpassword')?.invalid &&
+                (form.get('confirmpassword')?.dirty ||
+                  form.get('confirmpassword')?.touched ||
+                  isSubmitted)
+            }"
+          />
+        </div>
+      </div>
+      <div class="flex items-center gap-2 mt-6">
+        <div class="flex items-center">
+          <input
+            type="checkbox"
+            id="agreement"
+            class="text-primary focus:ring-0 rounded-sm cursor-pointer"
+          />
+          <label
+            for="agreement"
+            class="text-gray-600 ml-3 cursor-pointer select-none"
+            >I have read and agree to the
+          </label>
+        </div>
+        <a href="#" class="text-primary">terms & conditions</a>
+      </div>
+      <div class="mt-4">
+        <button
+          type="submit"
+          class="block w-full py-2 text-center text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition uppercase font-semibold"
+        >
+          create account
+        </button>
+      </div>
+    </form>
+
+    <div class="mt-6 flex justify-center relative">
+      <div class="text-gray-600 uppercase px-3 bg-white z-10 relative">
+        Or singup in with
+      </div>
+      <div
+        class="absolute left-0 top-3 w-full border-b-2 border-gray-200"
+      ></div>
     </div>
+    <div class="flex mt-4 gap-4">
+      <a
+        href=""
+        class="w-1/2 py-2 text-center text-white bg-blue-800 rounded uppercase font-semibold text-sm hover:bg-blue-700"
+        >facebook</a
+      >
+      <a
+        href=""
+        class="w-1/2 py-2 text-center text-white bg-red-700 rounded uppercase font-semibold text-sm hover:bg-red-600"
+        >google</a
+      >
+    </div>
+    <div>
+      <p class="mt-4 text-gray-600 text-center">
+        Already have an account?
+        <a routerLink="/auth/login" class="text-primary">Login now</a>
+      </p>
+    </div>
+  </div>
 </div>

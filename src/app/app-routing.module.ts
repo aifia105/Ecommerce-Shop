@@ -19,29 +19,62 @@ import { PaymentComponent } from './components/user/payment/payment.component';
 import { ManageCardComponent } from './components/user/manage-card/manage-card.component';
 
 const routes: Routes = [
-  {path: "", redirectTo: "hero" , pathMatch :"full"},
-  {path: "hero", data: {breadcrumb:"Hero"} , component:HeroComponent},
-  {path: "shop", data: {breadcrumb:"Shop"} , component:ShopListComponent},
-  {path: "user", data: {breadcrumb:"User"} , component:UserComponent, children: [
-    {path: "", redirectTo: "account-management" , pathMatch :"full"},
-    {path: "account-management", component:AccountManagementComponent},
-    {path: "profile-information", component:ProfileInformationComponent},
-    {path: "manage-address", component:ManageAddressComponent},
-    {path: "change-password", component:ChangePasswordComponent},
-    {path: "payment", component: PaymentComponent},
-    {path: "manage-card", component: ManageCardComponent}
-  ]},
-  {path: "product-detail", data: {breadcrumb:"ProductDetail"} , component:ProductDetailComponent},
-  {path: "about-us", data: {breadcrumb:"AboutUs"} , component:AboutUsComponent},
-  {path: "auth/login", data: {breadcrumb:"Login"} , component:LoginComponent},
-  {path: "auth/register", data: {breadcrumb:"Register"} , component:RegisterComponent},
-  {path: "contact-us", data: {breadcrumb:"ContactUs"} , component:ContactUsComponent},
-  {path: "search", data: {breadcrumb:"Search"} , component:SearchComponent},
-  {path: "**", data: {breadcrumb:"NotFound"} , component:NotFoundComponent},
+  { path: '', redirectTo: 'hero', pathMatch: 'full' },
+  { path: 'hero', data: { breadcrumb: 'Hero' }, component: HeroComponent },
+  { path: 'shop', data: { breadcrumb: 'Shop' }, component: ShopListComponent },
+  {
+    path: 'user',
+    data: { breadcrumb: 'User' },
+    component: UserComponent,
+    children: [
+      { path: '', redirectTo: 'account-management', pathMatch: 'full' },
+      { path: 'account-management', component: AccountManagementComponent },
+      { path: 'profile-information', component: ProfileInformationComponent },
+      { path: 'manage-address', component: ManageAddressComponent },
+      { path: 'change-password', component: ChangePasswordComponent },
+      { path: 'payment', component: PaymentComponent },
+      { path: 'manage-card', component: ManageCardComponent },
+    ],
+  },
+  {
+    path: 'product-detail',
+    data: { breadcrumb: 'ProductDetail' },
+    component: ProductDetailComponent,
+  },
+  {
+    path: 'about-us',
+    data: { breadcrumb: 'AboutUs' },
+    component: AboutUsComponent,
+  },
+  {
+    path: 'auth/login',
+    data: { breadcrumb: 'Login' },
+    component: LoginComponent,
+  },
+  {
+    path: 'auth/register',
+    data: { breadcrumb: 'Register' },
+    component: RegisterComponent,
+  },
+  {
+    path: 'contact-us',
+    data: { breadcrumb: 'ContactUs' },
+    component: ContactUsComponent,
+  },
+  {
+    path: 'search',
+    data: { breadcrumb: 'Search' },
+    component: SearchComponent,
+  },
+  {
+    path: '**',
+    data: { breadcrumb: 'NotFound' },
+    component: NotFoundComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
