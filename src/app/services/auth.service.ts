@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { RegisterRequest } from '../models/auth/registerRequest';
-import { Observable, map } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { User } from '../models/user';
 import { AuthResponse } from '../models/auth/authResponse';
 import { environment } from 'src/environments/environment';
@@ -23,8 +23,8 @@ export class AuthService {
       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
     });
     return this.http
-      .post<AuthResponse>(url, data, { headers: headers })
-      .pipe(map((response) => response.user));
+      .post<User>(url, data, { headers: headers })
+      .pipe(map((response) => response));
   }
 
   login(data: AuthentificationRequest): Observable<User> {
@@ -37,7 +37,7 @@ export class AuthService {
       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
     });
     return this.http
-      .post<AuthResponse>(url, data, { headers: headers })
-      .pipe(map((response) => response.user));
+      .post<User>(url, data, { headers: headers })
+      .pipe(map((response) => response));
   }
 }

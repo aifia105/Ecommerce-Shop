@@ -3,7 +3,7 @@ import { AuthStateInterface } from '../authStateInterface';
 import { authActions } from './actions';
 
 const initialState: AuthStateInterface = {
-  currentUser: undefined,
+  currentUser: null,
   validatonError: null,
   status: 'pending',
   isLogin: false,
@@ -28,6 +28,7 @@ const authFeature = createFeature({
       ...state,
       status: 'error',
       validatonError: action.erros,
+      isLogin: false,
     })),
     on(authActions.login, (state) => ({
       ...state,
@@ -44,6 +45,7 @@ const authFeature = createFeature({
       ...state,
       status: 'error',
       validatonError: action.erros,
+      isLogin: false,
     }))
   ),
 });

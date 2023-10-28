@@ -17,12 +17,14 @@ export class LoginComponent {
   });
   constructor(private fb: FormBuilder, private store: Store) {}
   onSubmit() {
-    if(this.form.valid){
+    if (this.form.valid) {
       console.log('form', this.form.getRawValue());
       const request: AuthentificationRequest = this.form.getRawValue();
       this.store.dispatch(authActions.login({ request }));
-    } else{
-      this.store.dispatch(authActions.loginFailure({ erros: { error: "infromation invalid !" } }))
+    } else {
+      this.store.dispatch(
+        authActions.loginFailure({ erros: { error: 'infromation invalid !' } })
+      );
     }
   }
 }
