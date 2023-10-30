@@ -17,6 +17,8 @@ import { ManageAddressComponent } from './components/user/manage-address/manage-
 import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
 import { PaymentComponent } from './components/user/payment/payment.component';
 import { ManageCardComponent } from './components/user/manage-card/manage-card.component';
+import { CartComponent } from './components/cart/cart.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'hero', pathMatch: 'full' },
@@ -40,6 +42,16 @@ const routes: Routes = [
     path: 'product-detail',
     data: { breadcrumb: 'ProductDetail' },
     component: ProductDetailComponent,
+  },
+  {
+    path: 'cart',
+    data: { breadcrumb: 'Cart' },
+    component: CartComponent,
+  },
+  {
+    path: 'wishlist',
+    data: { breadcrumb: 'Wishlist' },
+    component: WishlistComponent,
   },
   {
     path: 'about-us',

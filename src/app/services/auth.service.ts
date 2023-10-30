@@ -38,6 +38,6 @@ export class AuthService {
     });
     return this.http
       .post<User>(url, data, { headers: headers })
-      .pipe(map((response) => response));
+      .pipe( map((response) => response));
   }
 }

@@ -30,8 +30,10 @@ import { StoreModule, provideStore } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { authFeatureKey, authReducer } from './components/auth/store/reducers';
-import * as authEffects from'./components/auth/store/effect'
+import * as authEffects from'./components/auth/store/effect';
+import * as shopEffects from './components/shop-list/store/effect'
 import { HttpClientModule } from '@angular/common/http';
+import { shopFeatureKey, shopReducer } from './components/shop-list/store/reducers';
 
 
 @NgModule({
@@ -66,8 +68,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({authFeatureKey: authReducer}),
-    EffectsModule.forRoot([authEffects]),
+    StoreModule.forRoot({[authFeatureKey]: authReducer , [shopFeatureKey]: shopReducer}),
+    EffectsModule.forRoot([authEffects,shopEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode(), autoPause:true, trace: false, traceLimit: 75 }),
   ],
   providers: [],
