@@ -7,6 +7,7 @@ const initialState: ShopStateInterface = {
   status: 'pending',
   isLoading: false,
   Categorys: [],
+  Products: [],
 };
 
 export const shopFeature = createFeature({

@@ -79,6 +79,20 @@ const routes: Routes = [
     component: SearchComponent,
   },
   {
+    path: 'products',
+    loadChildren: () =>
+      import('./modules/products/products.module').then(
+        (m) => m.ProductsModule
+      ),
+  },
+  {
+    path: 'categorys',
+    loadChildren: () =>
+      import('./modules/categorys/categorys.module').then(
+        (m) => m.CategorysModule
+      ),
+  },
+  {
     path: '**',
     data: { breadcrumb: 'NotFound' },
     component: NotFoundComponent,

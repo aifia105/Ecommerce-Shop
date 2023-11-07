@@ -4,18 +4,18 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, tap, throwError } from 'rxjs';
-import { Category } from '../models/category';
+import { Observable, catchError, throwError } from 'rxjs';
+import { Product } from '../models/product';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CategoryService {
+export class ProductService {
   constructor(private http: HttpClient) {}
 
-  getAllCategorys(): Observable<Category[]> {
-    const url = environment.apiUrl + 'Categorys/All';
+  getAllProducts(): Observable<Product[]> {
+    const url = environment.apiUrl + 'Products/All';
     var headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'http://localhost:4200',
@@ -24,12 +24,12 @@ export class CategoryService {
       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
     });
     return this.http
-      .get<Category[]>(url, { headers: headers })
+      .get<Product[]>(url, { headers: headers })
       .pipe(catchError(this.handleError));
   }
 
-  addCategory(data: Category): Observable<Category> {
-    const url = environment.apiUrl + 'Categorys/create';
+  addProduct(data: Product): Observable<Product> {
+    const url = environment.apiUrl + 'Products/create';
     var headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'http://localhost:4200',
@@ -38,7 +38,7 @@ export class CategoryService {
       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
     });
     return this.http
-      .post<Category>(url, data, { headers: headers })
+      .post<Product>(url, data, { headers: headers })
       .pipe(catchError(this.handleError));
   }
 

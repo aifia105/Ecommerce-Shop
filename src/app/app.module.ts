@@ -32,8 +32,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { authFeatureKey, authReducer } from './components/auth/store/reducers';
 import * as authEffects from'./components/auth/store/effect';
 import * as shopEffects from './components/shop-list/store/effect'
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { shopFeatureKey, shopReducer } from './components/shop-list/store/reducers';
+import { Interceptor } from './interceptor/interceptor.interceptor';
 
 
 @NgModule({
@@ -72,7 +73,13 @@ import { shopFeatureKey, shopReducer } from './components/shop-list/store/reduce
     EffectsModule.forRoot([authEffects,shopEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode(), autoPause:true, trace: false, traceLimit: 75 }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
