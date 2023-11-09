@@ -28,6 +28,19 @@ export class ProductService {
       .pipe(catchError(this.handleError));
   }
 
+  getProduct(id: number): Observable<Product> {
+    const url = environment.apiUrl + 'Products/';
+    var headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'http://localhost:4200',
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+    });
+    return this.http.get<Product>(url + `${id}`, { headers: headers })
+    .pipe(catchError(this.handleError));
+  }
+
   addProduct(data: Product): Observable<Product> {
     const url = environment.apiUrl + 'Products/create';
     var headers = new HttpHeaders({

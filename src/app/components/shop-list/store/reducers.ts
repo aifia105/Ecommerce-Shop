@@ -31,6 +31,24 @@ export const shopFeature = createFeature({
       status: 'error',
       validatonError: action.erros,
       isLoading: false,
+    })),
+    on(shopActions.getProducts, (state) => ({
+      ...state,
+      status: 'loading',
+      isLoading: true,
+      validatonError: null,
+    })),
+    on(shopActions.getProductsSuccess, (state, action) => ({
+      ...state,
+      status: 'success',
+      isLoading: false,
+      Products: action.products,
+    })),
+    on(shopActions.getProductsFailure, (state, action) => ({
+      ...state,
+      status: 'error',
+      validatonError: action.erros,
+      isLoading: false,
     }))
   ),
 });

@@ -5,8 +5,10 @@ import { shopActions } from './actions';
 import { catchError, map, of, switchMap } from 'rxjs';
 import { Category } from 'src/app/models/category';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ProductService } from 'src/app/services/products.service';
+import { Product } from 'src/app/models/product';
 
-export const shopEffect = createEffect(
+export const shopCategoryEffect = createEffect(
   (action$ = inject(Actions), categoryService = inject(CategoryService)) => {
     return action$.pipe(
       ofType(shopActions.getCategory),
@@ -27,4 +29,27 @@ export const shopEffect = createEffect(
     );
   },
   { functional: true }
+);
+
+export const shopProductEffect = createEffect(
+  (actions$ = inject(Actions), productService = inject(ProductService)) => {
+    return actions$.pipe(
+      ofType(shopActions.getProducts),
+      switchMap(() => {
+        return productService.getAllProducts().pipe(
+          map((products: Product[]) => {
+            return shopActions.getProductsSuccess({ products: products });
+          }),
+          catchError((errorResponse: HttpErrorResponse) => {
+            return of(
+              shopActions.getProductsFailure({
+                erros: { error: errorResponse.message },
+              })
+            );
+          })
+        );
+      })
+    );
+  },
+  {functional: true}
 );
