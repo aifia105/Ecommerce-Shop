@@ -1,1 +1,47 @@
-<h1>Productslist</h1>
+<div class="container py-4 flex items-center gap-3">
+    <a routerLink="/" class="text-primary text-base">
+        <i class="fas fa-home"></i>
+     </a>
+     <span class="text-sm text-gray-400">
+        <i class="fas fa-chevron-right"></i>
+     </span>
+    <p class="text-gray-600 font-medium">Product Management</p>
+   </div>
+<div  class="container pt-4 pb-16 items-start gap-3">
+    <div class="shadow px-6 py-7 rounded overflow-hidden ">
+        <p class="text-lg font-medium capitalize mb-4">Product List:</p>
+        <table class="w-full">
+            <thead>
+                <tr class="text-md font-se text-gray-600 border border-gray-800 ">    
+                    <td class="pl-30"></td>
+                    <td class="py-4 px-4 text-center"> Name</td>
+                    <td class="py-4 px-4  text-center">Brand</td>
+                    <td class="py-4 px-4  text-center">Price</td>
+                    <td class="py-4 px-4  text-center">Rating</td>
+                    <td class="py-4 px-4  text-center">Category</td>
+                </tr>
+            </thead>
+           
+            <tbody>
+                <tr   class="w-full border border-gray-800  transition-colors ">  
+                    <td class="flex gap-x-4 items-center py-4 pl-10 ">
+                        <img [src]="" alt="product_img" class="w-40 aspect[3/2] rounded-lg object-cover object-top border border-gray-200">
+                        <a routerLink="/product-detail" class="text-lg font-medium text-gray-600">  </a>
+                    </td>
+                    <td class="font-medium text-center text-gray-600">name</td>
+                    <td class="font-medium text-center text-gray-600">Brand</td>
+                    <td class="font-medium text-center text-gray-600">Price</td>
+                    <td class=" text-center text-gray-600">
+                        <div class="flex items-center ml-14">
+                            <div class="flex gap-1 text-sm text-yellow-400" *ngFor="let i of [].constructor(4); let index = index" >
+                                <span><i class="fas fa-star"></i></span>
+                            </div>
+                            <div class="text-xs text-gray-600 ">{{"(" + 4 + "/5)" }}</div>
+                        </div>
+                    </td>
+                    <td class="font-medium text-center text-gray-600">Category</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

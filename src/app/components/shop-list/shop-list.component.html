@@ -151,8 +151,8 @@
         <div *ngIf="!grid">
             <table class="w-full">
                 <tbody>
-                    <tr *ngFor="let product of products"  class="w-full border-b border-primary  transition-colors ">
-                        <td class="flex gap-x-4 items-center py-4 pl-10">
+                    <tr *ngFor="let product of products"  class="w-full border-b border-gray-600 transition-colors ">
+                        <td class="flex gap-x-6 items-center py-4 pl-10">
                             <img [src]="product.pricture" alt="product_img" class="w-40 aspect[3/2] rounded-lg object-cover object-top border border-gray-200">
                             <a routerLink="/product-detail">
                                 <h4 class=" font-medium font-roboto text-lg mb-2 text-gray-800 hover:text-primary transition">{{product.name}}</h4>

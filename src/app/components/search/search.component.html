@@ -1,8 +1,8 @@
 <div class="container py-16 items-start">
     <div class="shadow px-6 py-7 rounded overflow-hidden ">
-        <table class="w-full">
+        <table class="w-full ">
             <thead>
-                <tr class="text-md font-se text-primary ">
+                <tr class="text-md font-se text-gray-600  border-b border-gray-800">
                     <td class="pl-40"></td>
                     <td class="py-4 px-4  text-center">Price</td>
                     <td class="py-4 px-4 text-center">Rating</td>
@@ -12,8 +12,8 @@
             </thead>
            
             <tbody>
-                <tr *ngFor="let product of products"  class="w-full border-b border-primary  transition-colors ">
-                    <td class="flex gap-x-4 items-center py-4 pl-10">
+                <tr *ngFor="let product of products"  class="w-full border-y border-gray-800 transition-colors ">
+                    <td class="flex gap-x-6 items-center py-4 pl-10">
                         <img [src]="product.pricture" alt="product_img" class="w-40 aspect[3/2] rounded-lg object-cover object-top border border-gray-200">
                         <a routerLink="/product-detail" class="text-lg font-medium text-gray-600"> {{product.name}} </a>
                     </td>

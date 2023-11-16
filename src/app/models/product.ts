@@ -4,9 +4,9 @@ export interface Product {
   id?: string;
   name: string;
   description: string;
-  priceHt: number;
-  tva: number;
   priceTTC: number;
+  priceHt: number;
+  tva:number;
   pricture: string;
   category: Category;
   avg_rating: number;
