@@ -35,7 +35,7 @@ import * as shopEffects from './components/shop-list/store/effect'
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { shopFeatureKey, shopReducer } from './components/shop-list/store/reducers';
 import { Interceptor } from './interceptor/interceptor.interceptor';
-import { categoryFeatureKey, categoryReducer } from './modules/categorys/stroe/reducers';
+
 
 
 @NgModule({
@@ -70,7 +70,7 @@ import { categoryFeatureKey, categoryReducer } from './modules/categorys/stroe/r
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({[authFeatureKey]: authReducer , [shopFeatureKey]: shopReducer, [categoryFeatureKey]: categoryReducer}),
+    StoreModule.forRoot({[authFeatureKey]: authReducer , [shopFeatureKey]: shopReducer}),
     EffectsModule.forRoot([authEffects,shopEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode(), autoPause:true, trace: false, traceLimit: 75 }),
   ],

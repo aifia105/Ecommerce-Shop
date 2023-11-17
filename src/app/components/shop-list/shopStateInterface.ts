@@ -8,4 +8,6 @@ export interface ShopStateInterface {
   isLoading: boolean;
   Categorys: Category[] | null;
   Products: Product[] | null;
+  category: Category | null | undefined;
+  product: Product | null | undefined;
 }

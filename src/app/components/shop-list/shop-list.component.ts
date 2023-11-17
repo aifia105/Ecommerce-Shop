@@ -24,6 +24,7 @@ export class ShopListComponent implements OnInit {
   constructor(private store: Store) {}
   ngOnInit(): void {
     this.store.dispatch(shopActions.getCategory());
+    this.store.dispatch(shopActions.getProducts());
   }
 
   products: Product[] = [

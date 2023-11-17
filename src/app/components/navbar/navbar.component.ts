@@ -9,6 +9,7 @@ import { Category } from 'src/app/models/category';
 })
 export class NavbarComponent {
   constructor(private route: Router){}
+  
 
   search(){
     this.route.navigate(['/search'])

@@ -1,10 +1,9 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Category } from 'src/app/models/category';
-import { categoryActions } from '../stroe/actions';
-import { selectCategorys } from '../stroe/reducers';
-import { Subscription, takeUntil } from 'rxjs';
+import { Subscription} from 'rxjs';
 import { shopActions } from 'src/app/components/shop-list/store/actions';
+import { selectCategorys } from 'src/app/components/shop-list/store/reducers';
 
 @Component({
   selector: 'app-categoryslist',
@@ -22,6 +21,7 @@ export class CategoryslistComponent implements OnDestroy {
         this.categorys = categories;
       }
     });
+    console.log(this.categorys);
   }
 
   ngOnDestroy() {

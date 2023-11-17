@@ -8,6 +8,8 @@ const initialState: ShopStateInterface = {
   isLoading: false,
   Categorys: [],
   Products: [],
+  category: undefined,
+  product: undefined,
 };
 
 export const shopFeature = createFeature({
@@ -49,6 +51,42 @@ export const shopFeature = createFeature({
       status: 'error',
       validatonError: action.erros,
       isLoading: false,
+    })),
+    on(shopActions.addCategory, (state) => ({
+      ...state,
+      status: 'submitting',
+      isLoading: false,
+      validatonError: null,
+    })),
+    on(shopActions.addCategorySuccess, (state, action) => ({
+      ...state,
+      status: 'success',
+      isLoading: false,
+      category: action.category,
+    })),
+    on(shopActions.addCategoryFailure, (state, action) => ({
+      ...state,
+      status: 'error',
+      validatonError: action.erros,
+      isLoading: false,
+    })),
+    on(shopActions.addProduct, (state) => ({
+      ...state,
+      status: 'submitting',
+      isLoading: false,
+      validatonError: null,
+    })),
+    on(shopActions.addProductSuccess, (state, action) => ({
+      ...state,
+      status: 'success',
+      isLoading: false,
+      product: action.product,
+    })),
+    on(shopActions.addProductFailure, (state, action) => ({
+      ...state,
+      status: 'error',
+      validatonError: action.erros,
+      isLoading: false,
     }))
   ),
 });
@@ -60,4 +98,5 @@ export const {
   selectCategorys,
   selectValidatonError,
   selectIsLoading,
+  selectProducts,
 } = shopFeature;

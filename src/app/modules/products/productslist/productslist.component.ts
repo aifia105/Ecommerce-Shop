@@ -1,6 +1,8 @@
 import { Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { shopActions } from 'src/app/components/shop-list/store/actions';
+import { selectProducts } from 'src/app/components/shop-list/store/reducers';
 import { Product } from 'src/app/models/product';
 
 @Component({
@@ -13,12 +15,12 @@ export class ProductslistComponent implements OnDestroy {
   product : Product[] = []; 
   constructor(private store: Store) {}
   ngOnInit() {
-    //this.store.dispatch();
-    //this.store.select().pipe().subscribe((products: Product[] | null) => {
-      // if(products !== null) {
-        //this.product = products;
-        //}
-        //}):        
+    this.store.dispatch(shopActions.getProducts());
+    this.store.select(selectProducts).pipe().subscribe((products: Product[] | null) => {
+       if(products !== null) {
+        this.product = products;
+        }
+        });     
 }
     
 

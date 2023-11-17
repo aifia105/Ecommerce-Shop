@@ -19,11 +19,11 @@
             </thead>
            
             <tbody>
-                <tr   class="w-full border border-gray-800  transition-colors ">
-                    <td class="font-medium text-center text-gray-600">id</td>
-                    <td class="font-medium text-center text-gray-600">name</td>
+                <tr *ngFor="let category of categorys"   class="w-full border border-gray-800  transition-colors ">
+                    <td class="font-medium text-center text-gray-600">{{category.id}}</td>
+                    <td class="font-medium text-center text-gray-600">{{category.nameCategory}}</td>
                     <td class="flex gap-x-4 items-center py-4  ">
-                        <img [src]="" alt="product_img" class="w-20 aspect[3/2] rounded-lg object-cover object-top border border-gray-200">
+                        <img [src]="category.image" alt="product_img" class="w-20 aspect[3/2] rounded-lg object-cover object-top border border-gray-200">
                         <a routerLink="/product-detail" class="text-lg font-medium text-gray-600">  </a>
                     </td>
                 </tr>
