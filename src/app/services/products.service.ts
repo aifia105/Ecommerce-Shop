@@ -55,6 +55,19 @@ export class ProductService {
       .pipe(catchError(this.handleError));
   }
 
+  getAllProductsByCategory(category: string):Observable<Product[]> {
+    const url = environment.apiUrl + 'Prdocuts/All/';
+    var headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'http://localhost:4200',
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+    });
+    return this.http.get<Product[]>(url + `${category}`, { headers: headers })
+    .pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       console.error('An error occurred:', error.error);

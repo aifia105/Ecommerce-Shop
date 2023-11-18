@@ -9,15 +9,19 @@ import { shopActions } from 'src/app/components/shop-list/store/actions';
   styleUrls: ['./addcategorys.component.scss'],
 })
 export class AddcategorysComponent {
+  fileHolder: File | null = null;
   form = this.fb.group({
     name: ['', Validators.required],
-    image: ['', Validators.required],
+    image: [null, Validators.required],
   });
   constructor(private fb: FormBuilder, private store: Store) {}
   onSubmit() {
     if (this.form.valid) {
-      console.log('form', this.form.getRawValue());
-      const request: any = this.form.getRawValue();
+      const request: any = new FormData();
+      request.append('name', this.form.get('name')?.value);
+      request.append('image', this.fileHolder as File);
+      
+      //const request: any = this.form.getRawValue();
       this.store.dispatch(shopActions.addCategory({ request }));
     } else {
       this.store.dispatch(
@@ -25,6 +29,12 @@ export class AddcategorysComponent {
           erros: { error: 'information invalid !' },
         })
       );
+    }
+  }
+
+  onFileChange(event: any) {
+    if(event.target.files.length > 0){
+      this.fileHolder = event.target.files[0];       
     }
   }
 }

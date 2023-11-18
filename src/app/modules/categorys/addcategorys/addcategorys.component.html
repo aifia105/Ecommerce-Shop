@@ -23,7 +23,7 @@
             
                        <div>
                            <label for="image" class="text-gray-600 mb-2 block">Category Image:</label>
-                           <input formControlName="image" type="file" class="block w-72 border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="City">
+                           <input formControlName="image" (change)="onFileChange($event)" type="file" class="block w-72 border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400">
                        </div>
                     </div>
                    </div>
