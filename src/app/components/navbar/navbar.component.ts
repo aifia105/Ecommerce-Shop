@@ -1,19 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Category } from 'src/app/models/category';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent {
-  constructor(private route: Router){}
+export class NavbarComponent implements OnDestroy {
+  private subcription$ = new Subscription();
+  category: Category[] = [];
+  constructor(private categoryService: CategoryService){}
+  ngOnInit(): void {
+    this.categoryService.getAllCategorys().pipe().subscribe((data) => {
+      this.category = data;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subcription$.unsubscribe();
+  }
   
 
-  search(){
-    this.route.navigate(['/search'])
-  }
+  
   categories : Category[] = [
 
     {nameCategory : "Apparel and accessories",

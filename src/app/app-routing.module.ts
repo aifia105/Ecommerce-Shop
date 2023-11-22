@@ -39,7 +39,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'product-detail',
+    path: 'product-detail/:id',
     data: { breadcrumb: 'ProductDetail' },
     component: ProductDetailComponent,
   },
@@ -100,7 +100,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
