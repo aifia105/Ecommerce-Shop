@@ -1,6 +1,6 @@
 <!-- hero section -->
 
-<div class="bg-cover bg-no-repeat bg-top  py-56 h-full" style="background-image: url(assets/home-page.jpg);" priority>
+<div class="bg-cover bg-no-repeat bg-top  py-56 h-full" [ngStyle]="{'background-image': 'url('+ currentImage +')'}" priority>
     <div class="container text-white">
         <h1 class="text-6xl  font-bold mb-4 capitalize ">
             Shop 'Til You Drop
@@ -50,7 +50,7 @@
     <div class="grid grid-cols-3 gap-3">
         <div class="relative rounded-sm overflow-hidden group" *ngFor="let category of categorys">
             <img [src]="category.image" class="w-full h-full" loading="lazy" priority>
-            <a routerLink="/search" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition">{{category.nameCategory}}</a>
+            <a [routerLink]="['/search', category.nameCategory]" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition">{{category.nameCategory}}</a>
         </div>
     </div>
 </div>

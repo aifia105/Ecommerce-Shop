@@ -10,6 +10,14 @@ import { HeroService } from 'src/app/services/hero.service';
   styleUrls: ['./hero.component.scss'],
 })
 export class HeroComponent implements OnDestroy {
+  imagesUrl: string[] = [
+    'assets/home-page.jpg',
+    'assets/shoe.jpg',
+    'assets/pexels.jpg',
+    'assets/Furniture.jpg'
+  ];
+  imageIndex = 0;
+  currentImage = this.imagesUrl[0];
   private subcription$ = new Subscription();
   category: Category[] = [];
   popularProducts: Product[] = [];
@@ -37,6 +45,18 @@ export class HeroComponent implements OnDestroy {
       .subscribe((data) => {
         this.newProducts = data;
       });
+    
+    setInterval(() => {
+      this.changeImage();
+    }, 6000);
+  }
+  changeImage() {
+    if(this.imageIndex === this.imagesUrl.length - 1){
+      this.imageIndex = 0;
+    } else {
+      this.imageIndex++;
+    }
+    this.currentImage = this.imagesUrl[this.imageIndex];
   }
 
   ngOnDestroy(): void {

@@ -12,11 +12,14 @@ import { CategoryService } from 'src/app/services/category.service';
 export class NavbarComponent implements OnDestroy {
   private subcription$ = new Subscription();
   category: Category[] = [];
+  user = JSON.parse(localStorage.getItem('user') || '{}');
   constructor(private categoryService: CategoryService){}
   ngOnInit(): void {
     this.categoryService.getAllCategorys().pipe().subscribe((data) => {
       this.category = data;
     });
+    console.log(this.user);
+    console.log(this.user.role);
   }
 
   ngOnDestroy(): void {

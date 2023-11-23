@@ -74,7 +74,7 @@ const routes: Routes = [
     component: ContactUsComponent,
   },
   {
-    path: 'search',
+    path: 'search/:categoryName',
     data: { breadcrumb: 'Search' },
     component: SearchComponent,
   },

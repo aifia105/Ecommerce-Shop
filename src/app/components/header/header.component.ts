@@ -7,10 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  user = JSON.parse(localStorage.getItem('user') || '{}');
   constructor(private route: Router){}
 
-  search(){
-    this.route.navigate(['/search'])
+  search(productName: string){
+    this.route.navigate(['/search', productName]);
   }
 
 }

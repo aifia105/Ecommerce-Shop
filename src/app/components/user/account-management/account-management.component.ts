@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./account-management.component.scss']
 })
 export class AccountManagementComponent {
+  user = JSON.parse(localStorage.getItem('user') || '{}');
 
 }
