@@ -25,7 +25,7 @@ import { ProfileInformationComponent } from './components/user/profile-informati
 import { ManageAddressComponent } from './components/user/manage-address/manage-address.component';
 import { ChangePasswordComponent } from './components/user/change-password/change-password.component';
 import { ManageCardComponent } from './components/user/manage-card/manage-card.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule, provideStore } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -69,6 +69,7 @@ import { Interceptor } from './interceptor/interceptor.interceptor';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({[authFeatureKey]: authReducer , [shopFeatureKey]: shopReducer}),
     EffectsModule.forRoot([authEffects,shopEffects]),

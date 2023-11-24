@@ -7,6 +7,7 @@ import { Category } from 'src/app/models/category';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ProductService } from 'src/app/services/products.service';
 import { Product } from 'src/app/models/product';
+import { Router } from '@angular/router';
 
 export const shopCategoryEffect = createEffect(
   (action$ = inject(Actions), categoryService = inject(CategoryService)) => {
@@ -31,13 +32,14 @@ export const shopCategoryEffect = createEffect(
   { functional: true }
 );
 export const shopAddCategoryEffect = createEffect(
-  (action$ = inject(Actions), category = inject(CategoryService)) => {
+  (action$ = inject(Actions), category = inject(CategoryService), route = inject(Router)) => {
     return action$.pipe(
       ofType(shopActions.addCategory),
       switchMap(({ request }) => {
         return category.addCategory(request).pipe(
           tap((response) => console.log('API Response: from effect', response)),
           map((category: Category) => {
+            route.navigate(['/categorys/categoryslist']);
             return shopActions.addCategorySuccess({ category });
           }),
           catchError((errorResponse: HttpErrorResponse) => {
@@ -78,12 +80,13 @@ export const shopProductEffect = createEffect(
 );
 
 export const shopAddProductEffect = createEffect(
-  (action$ = inject(Actions), product = inject(ProductService)) => {
+  (action$ = inject(Actions), product = inject(ProductService), route = inject(Router)) => {
     return action$.pipe(
       ofType(shopActions.addProduct),
       switchMap(({ request }) => {
         return product.addProduct(request).pipe(
           map((product: Product) => {
+            route.navigate(['/products/Productlist']);
             return shopActions.addProductSuccess({ product });
           }),
           catchError((errorResponse: HttpErrorResponse) => {

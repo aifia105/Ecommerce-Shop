@@ -18,8 +18,6 @@ export class NavbarComponent implements OnDestroy {
     this.categoryService.getAllCategorys().pipe().subscribe((data) => {
       this.category = data;
     });
-    console.log(this.user);
-    console.log(this.user.role);
   }
 
   ngOnDestroy(): void {

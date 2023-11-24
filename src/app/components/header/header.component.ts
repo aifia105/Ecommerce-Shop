@@ -10,8 +10,9 @@ export class HeaderComponent {
   user = JSON.parse(localStorage.getItem('user') || '{}');
   constructor(private route: Router){}
 
-  search(productName: string){
-    this.route.navigate(['/search', productName]);
+  search(input: HTMLInputElement){
+    this.route.navigate(['/search', input.value]);
+    input.value= '';
   }
 
 }

@@ -3,15 +3,14 @@
 
 
     <div class="grid grid-rows gap-4">
-        <div class=" bg-white px-4  pb-4 border-b" *ngFor="let card of cards">
+        <div class=" bg-white px-4  pb-4 border-b" *ngFor="let card of card">
             <div class="space-y-1 flex justify-between">
                 <p class="text-gray-700">{{card.cardNumber}}</p>
                 <p class="text-gray-800">{{card.cardHolderName}}</p>
-                <p class="text-gray-800">{{card.experationMonth}}</p>
-                <p class="text-gray-800">{{card.experationYear}}</p>
+                <p class="text-gray-800">{{card.experationDate}}</p>
                 <p class="text-gray-800">{{card.cvv}}</p>
                 <div class="flex justify-end gap-3 mt-2 text-primary">
-                    <a href="">
+                    <a (click)="deleteCard(card.id)">
                         <i class="fa-regular fa-trash-can"></i>
                     </a>
                 </div>

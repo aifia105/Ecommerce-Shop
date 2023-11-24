@@ -1,7 +1,7 @@
 export interface Cart {
+  id: string | null;
   cardNumber: number;
   cardHolderName: string;
-  experationMonth: string;
-  experationYear: number;
+  experationDate: Date;
   cvv: number;
 }

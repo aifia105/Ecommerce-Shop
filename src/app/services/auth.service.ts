@@ -6,12 +6,13 @@ import { User } from '../models/user';
 import { AuthResponse } from '../models/auth/authResponse';
 import { environment } from 'src/environments/environment';
 import { AuthentificationRequest } from '../models/auth/authenticationRequest';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private route: Router) {}
 
   register(data: RegisterRequest): Observable<User> {
     const url = environment.apiUrl + 'singin';
@@ -39,5 +40,12 @@ export class AuthService {
     return this.http
       .post<User>(url, data, { headers: headers })
       .pipe( map((response) => response));
+  }
+
+  logout(): void {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    this.route.navigate(['/auth/login'])
+
   }
 }
