@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Category } from 'src/app/models/category';
 import { Product } from 'src/app/models/product';
 import { shopActions } from './store/actions';
+import { cartActions } from '../cart/store/actions';
 
 @Component({
   selector: 'app-shop-list',
@@ -25,6 +26,10 @@ export class ShopListComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(shopActions.getCategory());
     this.store.dispatch(shopActions.getProducts());
+  }
+
+  addToCart(product: Product) {
+    this.store.dispatch(cartActions.addToCart({ cartProduct: { product, quantity: 1, total: product.priceTTC  }}));
   }
 
   products: Product[] = [

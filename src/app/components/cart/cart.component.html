@@ -16,26 +16,26 @@
     
     <div *ngFor="let product of products" class="flex items-center mb-3 justify-between gap-6 p-4 border border-gray-200 rounded">
         <div class="w-36">
-            <img [src]="product.pricture" alt="productImage" class="w-full">
+            <img [src]="product.product.pricture" alt="productImage" class="w-full">
         </div>
         <div class="w-1/3">
-            <p class="text-gray-800 text-xl font-poppins font-medium uppercase">{{product.name}}</p>
+            <p class="text-gray-800 text-xl font-poppins font-medium uppercase">{{product.product.name}}</p>
         </div>
         <!-- price -->
-        <h2 class="text-gray-800 text-lg font-semibold">{{product.priceTTC | currency}}</h2>
+        <h2 class="text-gray-800 text-lg font-semibold">{{product.product.priceTTC| currency}}</h2>
 
          <!-- quangtity -->
     <div>
         <div class="flex border border-gray-300 text-gray-600 divide-x divide-gray-300 w-max">
-            <div class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none" (click)="quantityMinus()">-</div>
-            <div class="h-8 w-8 text-base flex items-center justify-center">{{quantity | number}}</div>
-            <div class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none" (click)="quantityPlus()">+</div>
+            <div class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none" (click)="quantityMinus(product.product.id, product.product.priceTTC)">-</div>
+            <div class="h-8 w-8 text-base flex items-center justify-center">{{product.quantity| number}}</div>
+            <div class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none" (click)="quantityPlus(product.product.id, product.product.priceTTC)">+</div>
         </div>
     </div>
     <!-- total -->
-    <h2 class="text-gray-800 text-lg font-semibold">{{product.priceTTC | currency}}</h2>
+    <h2 class="text-gray-800 text-lg font-semibold">{{product.total| currency}}</h2>
     <!-- remove -->
-        <div class="text-gray-600 cursor-pointer hover:text-primary">
+        <div (click)="removeFromCart(product.product.id)" class="text-gray-600 cursor-pointer hover:text-primary">
             <i class="fas fa-trash"></i>
         </div>
     </div>
@@ -43,7 +43,7 @@
     <hr>
     <div class="flex justify-between items-center gap-6 p-4 mt-6 border-gray-200 rounded">
         <p class="text-gray-800 text-base font-semibold">Subtotal:</p>
-        <p class="text-gray-800 text-lg font-poppins font-medium">{{200 | currency}}</p>
+        <p class="text-gray-800 text-lg font-poppins font-medium">{{ total | currency}}</p>
     </div>  
     <div class="flex justify-between items-center gap-6 p-4 mt-6 border-gray-200 rounded">
         <p class="text-gray-800 text-base font-semibold">Shipping:</p>
@@ -52,12 +52,12 @@
     <hr>
     <div class="flex justify-between items-center gap-6 p-4 mt-6 border-gray-200 rounded">
         <p class="text-gray-800 text-base font-semibold">Total:</p>
-        <p class="text-gray-800 text-lg font-poppins font-medium">{{200 | currency}}</p>
+        <p class="text-gray-800 text-lg font-poppins font-medium">{{ total | currency}}</p>
     </div>
     <hr>
    <div class="flex justify-between items-center gap-6">
     <div>
-        <a href="#" class="block w-full px-6 py-2 text-center text-sm text-primary bg-white border border-primary rounded hover:bg-transparent   font-semibold">Clear Shopping Cart</a>
+        <button (click)="clearCart()" class="block w-full px-6 py-2 text-center text-sm text-gray-600 bg-white border border-gray-300 rounded hover:bg-transparent hover:text-primary transition  font-semibold">Clear Shopping Cart</button>
     </div>
     <div class="flex justify-between items-center gap-6 p-4 mt-6 border-gray-200 rounded">
         <a href="#" class="block w-full px-6 py-2 text-center text-sm text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition font-semibold">Proceed To Checkout</a>

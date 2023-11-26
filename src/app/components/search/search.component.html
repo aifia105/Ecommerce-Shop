@@ -37,10 +37,7 @@
                         </div>
                     </td>
                     <td class="font-medium text-center text-gray-600">{{product.category.nameCategory}}</td>
-                    <td class="font-medium text-center text-gray-600">
-                        <span class=" font-normal  " >{{product.brand}} </span>
-                       
-                    </td>
+                    <td class="font-medium text-center text-gray-600"><button (click)="addToCart(product)" class="px-6 py-2 text-center text-sm text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition font-semibold">Add To Cart</button></td>
                 </tr>
             </tbody>
         </table>

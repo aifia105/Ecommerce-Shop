@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { OrderClient } from 'src/app/models/order';
 import { Product } from 'src/app/models/product';
+import { CartProduct } from 'src/app/models/cartProduct';
+import { Store } from '@ngrx/store';
+import { cartActions } from './store/actions';
+import { selectItems } from './store/reducers';
 
 @Component({
   selector: 'app-cart',
@@ -8,77 +12,50 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent {
-  quantity : number = 0;
+  products: CartProduct[] = [];
+  quantity : number = 1;
+  total: number = 0;
   user = JSON.parse(localStorage.getItem('user') || '{}');
   order: OrderClient = {
     dateOrder: new Date(),
     orderStatus: 'pending',
     user: this.user,
-    product: [],
+    product:[],
     total: 0,
   };
+  constructor(private store: Store) {}
   
   ngOnInit() {
+    this.store.select(selectItems).subscribe((data) => {
+      this.products = data;
+      this.total = this.products.reduce((acc, product) => acc + product.total, 0);
+      this.order.product = this.products;
+      this.order.total = this.total;
+      this.order.user = this.user;
+      this.order.dateOrder = new Date();
+      this.order.orderStatus = 'submitted'
+    });
+
     console.log(this.order);
+  
   }
-  resetOrder() {
-    this.order = {
-      dateOrder: new Date(),
-      orderStatus: 'pending',
-      user: this.user,
-      product: [],
-      total: 0,
-    };
+  removeFromCart(productId: string | undefined) {
+    this.store.dispatch(cartActions.removeFromCart({ productId }));
   }
-
-
-
-
-
-
-  products: Product[] = [
-    {
-      name: 'iphone 7',
-      description: 'some text',
-      priceHt: 1000,
-      tva: 1000,
-      priceTTC: 2000,
-      pricture: 'assets/book.jpeg',
-      category: { nameCategory: 'Consumer electronics' },
-      avg_rating: 4,
-      CreationDate: '12/6/2000',
-      brand: 'apple',
-    },
-    {
-      name: 'iphone 7',
-      description: 'some text',
-      priceHt: 1000,
-      tva: 1000,
-      priceTTC: 2000,
-      pricture: 'assets/book.jpeg',
-      category: { nameCategory: 'Consumer electronics' },
-      avg_rating: 4,
-      CreationDate: '12/6/2000',
-      brand: 'apple',
-    },
-    {
-      name: 'iphone 7',
-      description: 'some text',
-      priceHt: 1000,
-      tva: 1000,
-      priceTTC: 2000,
-      pricture: 'assets/book.jpeg',
-      category: { nameCategory: 'Consumer electronics' },
-      avg_rating: 4,
-      CreationDate: '12/6/2000',
-      brand: 'apple',
-    },
-    
-  ];
-  quantityPlus(){
+  clearCart() {
+    this.store.dispatch(cartActions.clearCart());
+  }
+  
+  quantityPlus(productId: string | undefined, priceTTC: number){
     this.quantity++;
+    this.store.dispatch(cartActions.updateQuantity({productId, quantity: this.quantity}));
+    this.store.dispatch(cartActions.updateTotal({productId, total: this.quantity * priceTTC}));
     }
-    quantityMinus(){
+    quantityMinus(productId: string | undefined, priceTTC: number){
+    if(this.quantity > 1 ){
     this.quantity--;
+    this.store.dispatch(cartActions.updateQuantity({productId, quantity: this.quantity}));
+    this.store.dispatch(cartActions.updateTotal({productId, total: this.quantity * priceTTC}))
+    }
     }
 }

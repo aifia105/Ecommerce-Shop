@@ -37,6 +37,7 @@ import { shopFeatureKey, shopReducer } from './components/shop-list/store/reduce
 import { Interceptor } from './interceptor/interceptor.interceptor';
 import { ChekoutComponent } from './components/chekout/chekout.component';
 import { ValidationComponent } from './components/validation/validation.component';
+import { cartFeatureKey, cartReducer } from './components/cart/store/reducers';
 
 
 
@@ -75,7 +76,7 @@ import { ValidationComponent } from './components/validation/validation.componen
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({[authFeatureKey]: authReducer , [shopFeatureKey]: shopReducer}),
+    StoreModule.forRoot({[authFeatureKey]: authReducer , [shopFeatureKey]: shopReducer , [cartFeatureKey]: cartReducer}),
     EffectsModule.forRoot([authEffects,shopEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode(), autoPause:true, trace: false, traceLimit: 75 }),
   ],

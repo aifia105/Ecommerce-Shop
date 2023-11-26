@@ -110,8 +110,8 @@
                         <div class="text-xs text-gray-500 ml-3">{{"(" +product.avg_rating + "/5)" }}</div>
                     </div>
                 </div>
-                <a href="#" class="block w-full py-1 text-center font-semibold text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">
-                    <i class="fas fa-shopping-bag"></i> Add to cart</a>
+                <button (click)="addToCart(product)" class="block w-full py-1 text-center font-semibold text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">
+                    <i class="fas fa-shopping-bag"></i> Add to cart</button>
             </div>
         </div>
         <!-- product list tableu -->
@@ -134,7 +134,7 @@
                                 <div class="text-xs text-gray-600 ">{{"(" +product.avg_rating + "/5)" }}</div>
                             </div>
                         </td>
-                        <td class="font-medium text-center text-gray-600">{{product.brand}}</td>
+                        <td class="font-medium text-center text-gray-600"><button (click)="addToCart(product)" class="px-6 py-2 text-center text-sm text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition font-semibold">Add To Cart</button></td>
                     </tr>
                 </tbody>
             </table>

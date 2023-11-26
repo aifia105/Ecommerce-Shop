@@ -1,8 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/products.service';
+import { cartActions } from '../cart/store/actions';
 
 @Component({
   selector: 'app-search',
@@ -15,7 +17,7 @@ export class SearchComponent implements OnDestroy {
   productName: string = '';
   message: string = '';
   results: Product[] = [];
-  constructor(private productService: ProductService, private route: ActivatedRoute) {}
+  constructor(private productService: ProductService, private route: ActivatedRoute, private store: Store) {}
   ngOnInit(): void {
     this.categoryName = this.route.snapshot.params['nameCategory'];
     this.productName = this.route.snapshot.params['productName'];
@@ -34,6 +36,9 @@ export class SearchComponent implements OnDestroy {
     } else {
       this.message = 'no Items  !';
     }
+  }
+  addToCart(product: Product) {
+    this.store.dispatch(cartActions.addToCart({ cartProduct: { product, quantity: 1, total: product.priceTTC  }}));
   }
   ngOnDestroy(): void {
     this.subscription$.unsubscribe();

@@ -4,6 +4,8 @@ import { Category } from 'src/app/models/category';
 import { Subscription } from 'rxjs';
 import { CategoryService } from 'src/app/services/category.service';
 import { HeroService } from 'src/app/services/hero.service';
+import { Store } from '@ngrx/store';
+import { cartActions } from '../cart/store/actions';
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
@@ -24,7 +26,8 @@ export class HeroComponent implements OnDestroy {
   newProducts: Product[] = [];
   constructor(
     private categoryService: CategoryService,
-    private heroService: HeroService
+    private heroService: HeroService,
+    private store: Store
   ) {}
   ngOnInit(): void {
     this.categoryService
@@ -45,10 +48,12 @@ export class HeroComponent implements OnDestroy {
       .subscribe((data) => {
         this.newProducts = data;
       });
-    
-    setInterval(() => {
+  setInterval(() => {
       this.changeImage();
     }, 6000);
+  }
+  addToCart(product: Product) {
+    this.store.dispatch(cartActions.addToCart({ cartProduct: { product, quantity: 1, total: product.priceTTC  }}));
   }
   changeImage() {
     if(this.imageIndex === this.imagesUrl.length - 1){
@@ -62,6 +67,12 @@ export class HeroComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.subcription$.unsubscribe();
   }
+
+
+
+
+
+
 
   products: Product[] = [
     {
