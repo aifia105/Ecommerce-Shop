@@ -35,6 +35,8 @@ import * as shopEffects from './components/shop-list/store/effect'
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { shopFeatureKey, shopReducer } from './components/shop-list/store/reducers';
 import { Interceptor } from './interceptor/interceptor.interceptor';
+import { ChekoutComponent } from './components/chekout/chekout.component';
+import { ValidationComponent } from './components/validation/validation.component';
 
 
 
@@ -63,6 +65,8 @@ import { Interceptor } from './interceptor/interceptor.interceptor';
     ManageAddressComponent,
     ChangePasswordComponent,
     ManageCardComponent,
+    ChekoutComponent,
+    ValidationComponent,
 
   ],
   imports: [

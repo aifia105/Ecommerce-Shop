@@ -19,6 +19,8 @@ import { PaymentComponent } from './components/user/payment/payment.component';
 import { ManageCardComponent } from './components/user/manage-card/manage-card.component';
 import { CartComponent } from './components/cart/cart.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { ChekoutComponent } from './components/chekout/chekout.component';
+import { ValidationComponent } from './components/validation/validation.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'hero', pathMatch: 'full' },
@@ -77,6 +79,16 @@ const routes: Routes = [
     path: 'search/:categoryName',
     data: { breadcrumb: 'Search' },
     component: SearchComponent,
+  },
+  {
+    path: 'checkout',
+    data: { breadcrumb: 'Checkout' },
+    component: ChekoutComponent,
+  },
+  {
+    path: 'validate',
+    data: { breadcrumb: 'Search' },
+    component: ValidationComponent,
   },
   {
     path: 'products',
