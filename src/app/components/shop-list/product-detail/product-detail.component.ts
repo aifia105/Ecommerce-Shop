@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/products.service';
+import { cartActions } from '../../cart/store/actions';
+import { Store } from '@ngrx/store';
+import { wishlistActions } from '../../wishlist/store/actions';
 
 @Component({
   selector: 'app-product-detail',
@@ -11,12 +14,12 @@ import { ProductService } from 'src/app/services/products.service';
 })
 export class ProductDetailComponent implements OnDestroy {
   private unsubscribe$ = new Subscription();
-  quantity : number = 0;
-  id : number = 0;
+  quantity : number = 1;
+  id : string = '';
   currentProduct !: Product ;
   relatedProducts : Product[] = [];
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) {}
+  constructor(private productService: ProductService, private route: ActivatedRoute, private store: Store) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -27,6 +30,12 @@ export class ProductDetailComponent implements OnDestroy {
       this.productService.getAllProductsByCategory(this.currentProduct?.category.nameCategory).pipe().subscribe((data) => {
         this.relatedProducts = data;
       });
+  }
+  addToCart(product: Product) {
+    this.store.dispatch(cartActions.addToCart({ cartProduct: { product, quantity: this.quantity, total: product.priceTTC * this.quantity  }}));
+  }
+  addToWishList(product: Product) {
+    this.store.dispatch(wishlistActions.addToWishlist({ product }));
   }
 
   ngOnDestroy() {

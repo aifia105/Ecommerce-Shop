@@ -89,9 +89,9 @@
                         <a [routerLink]="['/product-detail', product.id]" class="text-white text-lg w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition">
                             <i class="fas fa-search"></i>
                         </a>
-                        <a routerLink="" class="text-white text-lg w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition">
+                        <button (click)="addToWishList(product)" class="text-white text-lg w-9 h-9 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition">
                             <i class="far fa-heart"></i>
-                        </a>
+                        </button>
                     </div>
                 </div>
                 <div class="pt-3 pb-3 px-4">

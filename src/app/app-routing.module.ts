@@ -81,7 +81,7 @@ const routes: Routes = [
     component: SearchComponent,
   },
   {
-    path: 'checkout',
+    path: 'checkout/:order',
     data: { breadcrumb: 'Checkout' },
     component: ChekoutComponent,
   },

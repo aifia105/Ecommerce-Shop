@@ -65,12 +65,12 @@
 
     <!-- buttons -->
     <div class="flex gap-3 border-b border-gray-200 pb-5 mt-6">
-        <a href="" class="bg-primary border border-primary text-white px-8 py-2 font-semibold rounded  flex items-center gap-2 hover:bg-transparent hover:text-primary transition">
+        <button (click)="addToCart(currentProduct)" class="bg-primary border border-primary text-white px-8 py-2 font-semibold rounded  flex items-center gap-2 hover:bg-transparent hover:text-primary transition">
             <i class="fas fa-shopping-bag"></i> Add to cart
-        </a>
-        <a href="" class=" border border-gray-300 text-gray-600  px-8 py-2 font-semibold rounded  flex items-center gap-2  hover:text-primary transition">
+        </button>
+        <button (click)="addToWishList(currentProduct)" class=" border border-gray-300 text-gray-600  px-8 py-2 font-semibold rounded  flex items-center gap-2  hover:text-primary transition">
             <i class="fas fa-heart"></i> Wishlist
-        </a>
+        </button>
     </div>
 
     <!-- links -->
@@ -149,9 +149,9 @@
                     <div class="text-xs text-gray-500 ml-3">{{"(" +product.avg_rating + "/5)" }}</div>
                 </div>
             </div>
-            <a href="#" class="block w-full py-1 text-center font-semibold text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">
+            <button (click)="addToCart(product)" class="block w-full py-1 text-center font-semibold text-white bg-primary border border-primary rounded-b hover:bg-transparent hover:text-primary transition">
                 <i class="fas fa-shopping-bag"></i> Add to cart
-            </a>
+            </button>
         </div>
     </div>
 </div>

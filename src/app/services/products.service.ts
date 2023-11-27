@@ -28,7 +28,7 @@ export class ProductService {
       .pipe(catchError(this.handleError));
   }
 
-  getProduct(id: number): Observable<Product> {
+  getProduct(id: string): Observable<Product> {
     const url = environment.apiUrl + 'Products/';
     var headers = new HttpHeaders({
       'Content-Type': 'application/json',

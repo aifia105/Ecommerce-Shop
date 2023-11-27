@@ -30,9 +30,10 @@
         </div>
 
         <h2 class="text-gray-800 text-lg font-semibold">{{product.priceTTC | currency}}</h2>
-        <a href="#" class="px-6 py-2 text-center text-sm text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition font-semibold">Move To Cart</a>
-        <div class="text-gray-600 cursor-pointer hover:text-primary">
+        <a (click)="addToCart(product)" class="px-6 py-2 cursor-pointer text-center text-sm text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition font-semibold">Move To Cart</a>
+        <div (click)="removeFromWishlist(product.id)" class="text-gray-600 cursor-pointer hover:text-primary">
             <i class="fas fa-trash"></i>
         </div>
     </div>
+    <div *ngIf="products.length < 1" class="text-lg flex items-center justify-center text-gray-600  font-medium">no Items  !</div>
 </div>

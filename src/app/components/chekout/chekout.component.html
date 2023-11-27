@@ -1,1 +1,69 @@
-<p>chekout works!</p>
+<!-- icon -->
+<div class="container py-4 flex items-center gap-3">
+    <a routerLink="/" class="text-primary text-base">
+       <i class="fas fa-home"></i>
+    </a>
+    <span class="text-sm text-gray-400">
+       <i class="fas fa-chevron-right"></i>
+    </span>
+    <p class="text-gray-600 font-medium">Checkout</p>
+</div>
+<div class="container flex items-center justify-between gap-6 p-4 ">
+    <h1 class="text-gray-800 text-sm font-poppins font-semibold uppercase ">Checkout </h1>
+</div>
+<hr>
+<div class="container  items-start border border-gray-300 gap-6 mt-6 mb-16 pt-4 pb-16">
+    <h1 class="text-gray-800 text-sm font-poppins font-semibold mb-5 uppercase ">Payement</h1>
+    <h1 class="text-gray-800 text-sm font-poppins font-medium   ">Confim Card:</h1>
+    <div *ngFor="let cart of carts"  class="flex items-center  mb-4 justify-between gap-6 p-4 border border-gray-200 rounded">
+        <div class="w-36">
+            <img src="assets/card.png" alt="productImage" class="w-12">
+        </div>
+        <div class=" flex gap-60">
+            <p class="text-gray-800  font-poppins font-medium uppercase">{{cart.cardHolderName}}</p>
+            <p  class="text-gray-500 font-poppins font-medium">{{cart.cardNumber}}</p>
+            <p  class="text-gray-500 font-poppins font-medium">{{cart.experationDate | date}}</p>     
+        </div>   
+        <div >
+            <input type="radio" class="text-primary"  name="card" value="SELECTED">
+        </div>
+    </div>
+    <hr>
+    <h1 class="text-gray-800 text-sm font-poppins font-medium mt-6   ">Confim Address:</h1>
+    <div  class="flex items-center  mb-4 justify-between gap-6 p-4 border border-gray-200 rounded">
+        <div class="w-36">
+            <img src="assets/delivery.png" alt="productImage" class="w-12">
+        </div>
+        <div style="margin-left: -400px;">
+            <p class="text-gray-800 items-start  font-poppins font-medium uppercase">{{userAdderss}}</p>    
+        </div>   
+        <div >
+            <input type="radio" class="text-primary"  name="address" value="SELECTED">
+        </div>
+    </div>
+    <hr>
+    <h1 class="text-gray-800 text-sm font-poppins font-medium mt-6   ">Confim Delivery:</h1>
+    <div  class="   mb-4  gap-6 p-4 border border-gray-200 rounded">
+        <div class="flex justify-between items-center gap-6 p-4  ">
+            <p class="text-gray-800  font-semibold">Name:</p>
+            <!--
+                <p class="text-gray-800  font-medium">{{order.dateOrder | date}}</p>
+            -->
+        </div> 
+        <div class="flex justify-between items-center gap-6 p-4  ">
+            <p class="text-gray-800  font-semibold">Date:</p>
+         <!--
+            <p class="text-gray-800  font-medium">{{order.dateOrder | date}}</p>
+         -->
+        </div> 
+        <div class="flex justify-between items-center gap-6 p-4  ">
+            <p class="text-gray-800  font-semibold">Total:</p>
+            <!--
+                <p class="text-gray-800  font-medium">{{order.dateOrder | date}}</p>
+            -->
+        </div> 
+    </div>
+    <div class="flex justify-between items-center gap-6 p-4 mt-6 border-gray-200 rounded">
+        <button (click)="confirmOrder()" class="block w-full px-6 py-2 text-center text-sm text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition font-semibold">Confirm</button>
+    </div>
+</div>

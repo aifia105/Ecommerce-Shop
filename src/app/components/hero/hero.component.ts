@@ -6,6 +6,7 @@ import { CategoryService } from 'src/app/services/category.service';
 import { HeroService } from 'src/app/services/hero.service';
 import { Store } from '@ngrx/store';
 import { cartActions } from '../cart/store/actions';
+import { wishlistActions } from '../wishlist/store/actions';
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
@@ -54,6 +55,9 @@ export class HeroComponent implements OnDestroy {
   }
   addToCart(product: Product) {
     this.store.dispatch(cartActions.addToCart({ cartProduct: { product, quantity: 1, total: product.priceTTC  }}));
+  }
+  addToWishList(product: Product) {
+    this.store.dispatch(wishlistActions.addToWishlist({ product }));
   }
   changeImage() {
     if(this.imageIndex === this.imagesUrl.length - 1){

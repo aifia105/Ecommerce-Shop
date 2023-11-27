@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OrderClient } from 'src/app/models/order';
-import { Product } from 'src/app/models/product';
 import { CartProduct } from 'src/app/models/cartProduct';
 import { Store } from '@ngrx/store';
 import { cartActions } from './store/actions';
 import { selectItems } from './store/reducers';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent {
+export class CartComponent implements OnInit {
   products: CartProduct[] = [];
   quantity : number = 1;
   total: number = 0;
@@ -23,7 +23,7 @@ export class CartComponent {
     product:[],
     total: 0,
   };
-  constructor(private store: Store) {}
+  constructor(private store: Store, private route: Router) {}
   
   ngOnInit() {
     this.store.select(selectItems).subscribe((data) => {
@@ -38,6 +38,9 @@ export class CartComponent {
 
     console.log(this.order);
   
+  }
+  submitOrder() {
+    this.route.navigate(['/checkout/:order',this.order]);
   }
   removeFromCart(productId: string | undefined) {
     this.store.dispatch(cartActions.removeFromCart({ productId }));
