@@ -7,6 +7,7 @@ import { HeroService } from 'src/app/services/hero.service';
 import { Store } from '@ngrx/store';
 import { cartActions } from '../cart/store/actions';
 import { wishlistActions } from '../wishlist/store/actions';
+import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
@@ -28,7 +29,8 @@ export class HeroComponent implements OnDestroy {
   constructor(
     private categoryService: CategoryService,
     private heroService: HeroService,
-    private store: Store
+    private store: Store,
+    private sncakBar: MatSnackBar
   ) {}
   ngOnInit(): void {
     this.categoryService
@@ -55,9 +57,16 @@ export class HeroComponent implements OnDestroy {
   }
   addToCart(product: Product) {
     this.store.dispatch(cartActions.addToCart({ cartProduct: { product, quantity: 1, total: product.priceTTC  }}));
+    this.sncakBar.open('Product has been added to the cart', 'Close', {
+      duration: 3000,
+    });
   }
   addToWishList(product: Product) {
     this.store.dispatch(wishlistActions.addToWishlist({ product }));
+    this.sncakBar.open('Product has been added to the wishlist', 'Close', {
+      duration: 3000,
+    });
+    
   }
   changeImage() {
     if(this.imageIndex === this.imagesUrl.length - 1){

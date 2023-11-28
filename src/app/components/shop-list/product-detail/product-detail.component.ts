@@ -6,6 +6,7 @@ import { ProductService } from 'src/app/services/products.service';
 import { cartActions } from '../../cart/store/actions';
 import { Store } from '@ngrx/store';
 import { wishlistActions } from '../../wishlist/store/actions';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-product-detail',
@@ -19,7 +20,7 @@ export class ProductDetailComponent implements OnDestroy {
   currentProduct !: Product ;
   relatedProducts : Product[] = [];
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private store: Store) {}
+  constructor(private productService: ProductService, private route: ActivatedRoute, private store: Store, private sncakBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
@@ -33,9 +34,16 @@ export class ProductDetailComponent implements OnDestroy {
   }
   addToCart(product: Product) {
     this.store.dispatch(cartActions.addToCart({ cartProduct: { product, quantity: this.quantity, total: product.priceTTC * this.quantity  }}));
+    this.sncakBar.open('Product has been added to the cart', 'Close', {
+      duration: 3000,
+    });
+    
   }
   addToWishList(product: Product) {
     this.store.dispatch(wishlistActions.addToWishlist({ product }));
+    this.sncakBar.open('Product has been added to the wishlist', 'Close', {
+      duration: 3000,
+    });
   }
 
   ngOnDestroy() {

@@ -5,6 +5,7 @@ import { Product } from 'src/app/models/product';
 import { shopActions } from './store/actions';
 import { cartActions } from '../cart/store/actions';
 import { wishlistActions } from '../wishlist/store/actions';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-shop-list',
@@ -23,7 +24,7 @@ export class ShopListComponent implements OnInit {
     { nameCategory: 'Personal care and beauty' },
     { nameCategory: 'Furniture and decor' },
   ];
-  constructor(private store: Store) {}
+  constructor(private store: Store, private sncakBar: MatSnackBar) {}
   ngOnInit(): void {
     this.store.dispatch(shopActions.getCategory());
     this.store.dispatch(shopActions.getProducts());
@@ -31,9 +32,15 @@ export class ShopListComponent implements OnInit {
 
   addToCart(product: Product) {
     this.store.dispatch(cartActions.addToCart({ cartProduct: { product, quantity: 1, total: product.priceTTC  }}));
+    this.sncakBar.open('Product has been added to the cart', 'Close', {
+      duration: 3000,
+    });
   }
   addToWishList(product: Product) {
     this.store.dispatch(wishlistActions.addToWishlist({ product }));
+    this.sncakBar.open('Product has been added to the wishlist', 'Close', {
+      duration: 3000,
+    });
   }
 
   products: Product[] = [

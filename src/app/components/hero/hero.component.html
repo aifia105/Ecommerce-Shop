@@ -2,11 +2,11 @@
 
 <div class="bg-cover bg-no-repeat bg-top  py-56 h-full" [ngStyle]="{'background-image': 'url('+ currentImage +')'}" priority>
     <div class="container text-white">
-        <h1 class="text-6xl  font-bold mb-4 capitalize ">
+        <h1 class="text-6xl  font-medium mb-4 capitalize ">
             Shop 'Til You Drop
         </h1>
-        <h2 class="text-xl  font-bold mb-4 capitalize ">Your favorite online shope </h2>
-        <h2 class="text-xl  font-bold mb-4 capitalize ">All your needs in one place</h2>
+        <h2 class="text-xl  font-medium mb-2 capitalize ">Your favorite online shope </h2>
+        <h2 class="text-xl  font-medium mb-4 capitalize ">All your needs in one place</h2>
 
         <div class="mt-12">
             <a routerLink="/shop" class="bg-primary border border-primary text-gray-800 px-8 py-3 font-medium rounded-md hover:bg-transparent hover:text-primary transition">Shop Now</a>
@@ -46,7 +46,7 @@
 <!-- category section -->
 
 <div class="container py-16">
-    <h2 class="text-3xl font-semibold text-gray-800 uppercase mb-6">Shop by category</h2>
+    <h2 class="text-3xl font-medium text-gray-800 uppercase mb-6">Shop by category</h2>
     <div class="grid grid-cols-3 gap-3">
         <div class="relative rounded-sm overflow-hidden group" *ngFor="let category of categorys">
             <img [src]="category.image" class="w-full h-full" loading="lazy" priority>
@@ -57,7 +57,7 @@
 <!-- popular products section  -->
 
 <div class="container pb-16">
-    <h2 class="text-3xl font-bold text-gray-800 uppercase mb-6">popular products</h2>
+    <h2 class="text-3xl font-medium text-gray-800 uppercase mb-6">popular products</h2>
     <div class="grid grid-cols-4  gap-6 overflow-hidden">
         <div class="bg-white shadow rounded  group" *ngFor="let product of products">
             <div class="relative ">
@@ -102,7 +102,7 @@
 <!-- recomended products -->
 
 <div class="container pb-16">
-    <h2 class="text-3xl font-bold text-gray-800 uppercase mb-6">New products</h2>
+    <h2 class="text-3xl font-medium text-gray-800 uppercase mb-6">New products</h2>
     <div class="grid grid-cols-4 gap-6">
         <div class="bg-white shadow rounded overflow-hidden group" *ngFor="let product of products">
             <div class="relative ">

@@ -41,6 +41,11 @@ const routes: Routes = [
     ],
   },
   {
+    path: 'checkout',
+    data: { breadcrumb: 'Checkout' },
+    component: ChekoutComponent,
+  },
+  {
     path: 'product-detail/:id',
     data: { breadcrumb: 'ProductDetail' },
     component: ProductDetailComponent,
@@ -79,11 +84,6 @@ const routes: Routes = [
     path: 'search/:categoryName',
     data: { breadcrumb: 'Search' },
     component: SearchComponent,
-  },
-  {
-    path: 'checkout/:order',
-    data: { breadcrumb: 'Checkout' },
-    component: ChekoutComponent,
   },
   {
     path: 'validate',

@@ -39,6 +39,8 @@ import { ChekoutComponent } from './components/chekout/chekout.component';
 import { ValidationComponent } from './components/validation/validation.component';
 import { cartFeatureKey, cartReducer } from './components/cart/store/reducers';
 import { wishlistFeatureKey, wishlistReducer } from './components/wishlist/store/reducers';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -76,6 +78,8 @@ import { wishlistFeatureKey, wishlistReducer } from './components/wishlist/store
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({[authFeatureKey]: authReducer , [shopFeatureKey]: shopReducer , [cartFeatureKey]: cartReducer, [wishlistFeatureKey]: wishlistReducer}),
     EffectsModule.forRoot([authEffects,shopEffects]),

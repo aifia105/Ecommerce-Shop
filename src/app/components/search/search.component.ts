@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/products.service';
 import { cartActions } from '../cart/store/actions';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-search',
@@ -17,7 +18,7 @@ export class SearchComponent implements OnDestroy {
   productName: string = '';
   message: string = '';
   results: Product[] = [];
-  constructor(private productService: ProductService, private route: ActivatedRoute, private store: Store) {}
+  constructor(private productService: ProductService, private route: ActivatedRoute, private store: Store, private sncakBar: MatSnackBar) {}
   ngOnInit(): void {
     this.categoryName = this.route.snapshot.params['nameCategory'];
     this.productName = this.route.snapshot.params['productName'];
@@ -39,6 +40,9 @@ export class SearchComponent implements OnDestroy {
   }
   addToCart(product: Product) {
     this.store.dispatch(cartActions.addToCart({ cartProduct: { product, quantity: 1, total: product.priceTTC  }}));
+    this.sncakBar.open('Product has been added to the cart', 'Close', {
+      duration: 3000,
+    });
   }
   ngOnDestroy(): void {
     this.subscription$.unsubscribe();

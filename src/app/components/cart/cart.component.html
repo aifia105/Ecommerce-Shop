@@ -22,7 +22,7 @@
             <p class="text-gray-800 text-xl font-poppins font-medium uppercase">{{product.product.name}}</p>
         </div>
         <!-- price -->
-        <h2 class="text-gray-800 text-lg font-semibold">{{product.product.priceTTC| currency}}</h2>
+        <h2 class="text-gray-800 text-lg font-medium">{{product.product.priceTTC| currency}}</h2>
 
          <!-- quangtity -->
     <div>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <!-- total -->
-    <h2 class="text-gray-800 text-lg font-semibold">{{product.total| currency}}</h2>
+    <h2 class="text-gray-800 text-lg font-medium">{{product.total| currency}}</h2>
     <!-- remove -->
         <div (click)="removeFromCart(product.product.id)" class="text-gray-600 cursor-pointer hover:text-primary">
             <i class="fas fa-trash"></i>
@@ -61,7 +61,7 @@
         <button (click)="clearCart()" class="block w-full px-6 py-2 text-center text-sm text-gray-600 bg-white border border-gray-300 rounded hover:bg-transparent hover:text-primary transition  font-semibold">Clear Shopping Cart</button>
     </div>
     <div class="flex justify-between items-center gap-6 p-4 mt-6 border-gray-200 rounded">
-        <button (click)="submitOrder()" class="block w-full px-6 py-2 text-center text-sm text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition font-semibold">Proceed To Checkout</button>
+        <a [routerLink]="['/checkout',order]" class="block w-full px-6 py-2 text-center text-sm text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition font-semibold">Proceed To Checkout</a>
     </div>
    </div>
     

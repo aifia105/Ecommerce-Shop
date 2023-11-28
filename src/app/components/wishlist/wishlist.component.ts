@@ -5,6 +5,7 @@ import { ProductService } from 'src/app/services/products.service';
 import { selectItems } from './store/reducers';
 import { wishlistActions } from './store/actions';
 import { cartActions } from '../cart/store/actions';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-wishlist',
@@ -15,7 +16,7 @@ export class WishlistComponent implements OnInit {
   availability: boolean = true;
   products: Product[] = [];
 
-  constructor(private store: Store, private productService: ProductService) {}
+  constructor(private store: Store, private productService: ProductService, private sncakBar: MatSnackBar) {}
   ngOnInit(): void {
     this.store.select(selectItems).subscribe((data) => {
       this.products = data;
@@ -44,6 +45,9 @@ export class WishlistComponent implements OnInit {
 
   addToCart(product: Product) {
     this.store.dispatch(cartActions.addToCart({ cartProduct: { product, quantity: 1, total: product.priceTTC * 1  }}));
+    this.sncakBar.open('Product has been added to the cart', 'Close', {
+      duration: 3000,
+    });
   }
 
 }
