@@ -5,6 +5,8 @@ import { Store } from '@ngrx/store';
 import { cartActions } from './store/actions';
 import { selectItems } from './store/reducers';
 import {  Router } from '@angular/router';
+import { OrderService } from 'src/app/services/order.service';
+import { chekoutActions } from '../chekout/store/actions';
 
 @Component({
   selector: 'app-cart',
@@ -22,8 +24,15 @@ export class CartComponent implements OnInit {
     user: this.user,
     product:[],
     total: 0,
+    card: {
+      id: '',
+      cardNumber: 0,
+      cardHolderName: '',
+      experationDate: new Date(),
+      cvv: 0,
+    }
   };
-  constructor(private store: Store, private route: Router) {}
+  constructor(private store: Store, private route: Router, private orderService: OrderService) {}
   
   ngOnInit() {
     this.store.select(selectItems).subscribe((data) => {
@@ -37,10 +46,12 @@ export class CartComponent implements OnInit {
     });
 
     console.log(this.order);
+    
   
   }
   submitOrder() {
-    this.route.navigate(['/checkout/:order',this.order]);
+    this.store.dispatch(chekoutActions.addToChekout({ orderClient: this.order}));
+    this.route.navigate(['/checkout']);
   }
   removeFromCart(productId: string | undefined) {
     this.store.dispatch(cartActions.removeFromCart({ productId }));

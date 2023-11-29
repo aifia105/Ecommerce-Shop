@@ -9,6 +9,7 @@ import { environment } from "src/environments/environment";
 })
 
 export class OrderService {
+  order!: OrderClient;
     constructor(private http: HttpClient) {}
 
     createOrder(order: OrderClient): Observable<OrderClient> {
@@ -36,6 +37,10 @@ export class OrderService {
         return this.http.get<OrderClient[]>(url + `${id}`, { headers: headers })
         .pipe(catchError(this.handleError));
     }
+
+   
+
+   
 
 
     private handleError(error: HttpErrorResponse) {

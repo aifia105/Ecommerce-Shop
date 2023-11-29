@@ -61,7 +61,7 @@
         <button (click)="clearCart()" class="block w-full px-6 py-2 text-center text-sm text-gray-600 bg-white border border-gray-300 rounded hover:bg-transparent hover:text-primary transition  font-semibold">Clear Shopping Cart</button>
     </div>
     <div class="flex justify-between items-center gap-6 p-4 mt-6 border-gray-200 rounded">
-        <a [routerLink]="['/checkout',order]" class="block w-full px-6 py-2 text-center text-sm text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition font-semibold">Proceed To Checkout</a>
+        <button (click)=" submitOrder()" class="block w-full px-6 py-2 text-center text-sm text-white bg-primary border border-primary rounded hover:bg-transparent hover:text-primary transition font-semibold">Proceed To Checkout</button>
     </div>
    </div>
     

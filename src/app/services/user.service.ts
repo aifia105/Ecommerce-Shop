@@ -57,7 +57,7 @@ export class UserServie {
     }
 
     getAllCards(id: string): Observable<Cart[]> {
-        const url = environment.apiUrl + 'card/All'; 
+        const url = environment.apiUrl + 'card/All/'; 
         var headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': 'http://localhost:4200',

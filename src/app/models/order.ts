@@ -1,5 +1,6 @@
 import { User } from './user';
 import { CartProduct } from './cartProduct';
+import { Cart } from './cart';
 
 export interface OrderClient {
   id?: string;
@@ -8,4 +9,5 @@ export interface OrderClient {
   orderStatus: string;
   user: User;
   product: CartProduct[];
+  card: Cart;
 }

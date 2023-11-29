@@ -6,6 +6,8 @@ import { OrderClient } from 'src/app/models/order';
 import { OrderService } from 'src/app/services/order.service';
 import { cartActions } from '../cart/store/actions';
 import { UserServie } from 'src/app/services/user.service';
+import { selectOrder } from './store/reducers';
+
 
 @Component({
   selector: 'app-chekout',
@@ -15,24 +17,28 @@ import { UserServie } from 'src/app/services/user.service';
 export class ChekoutComponent implements OnInit {
   order !: OrderClient;
   carts: Cart[] =[];
+  selectedCard!: Cart;
   user = JSON.parse(localStorage.getItem('user') || '{}');
   userAdderss: String = '';
   constructor(private route: ActivatedRoute, private router: Router, private orderService:OrderService, private store: Store, private userService:UserServie) {}
   ngOnInit(): void {
-    this.order =  this.route.snapshot.params['order'];
+    this.store.select(selectOrder).subscribe((data) => {
+      this.order = data;
+    });
     this.userAdderss = this.user.address.replace(/,/g, ', ').replace(/\s+/g, ' ');
-    console.log(this.order);
     this.userService.getAllCards(this.user.id).subscribe((data) => {
       this.carts = data;
-      //nzid lcard mat order
-    })
+    });
   }
   confirmOrder() {
-    this.orderService.createOrder(this.order).subscribe((data) => {
-      console.log(data);
-      this.router.navigate(['/validate']);
-      this.store.dispatch(cartActions.clearCart());
-    });
+    if(this.selectedCard && this.userAdderss.length > 0) {
+      let orderCopy = {...this.order};
+      orderCopy.card = this.selectedCard;
+      this.orderService.createOrder(orderCopy).subscribe((data) => {
+        this.router.navigate(['/validate']);
+        this.store.dispatch(cartActions.clearCart());
+      });
+    }
     
   }
   cartss : Cart[] = [
