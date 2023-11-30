@@ -18,7 +18,7 @@ export class UserServie {
     }
 
     updateUser(user: UpdateUser): Observable<User> {
-        const url = environment.apiUrl + 'user'; 
+        const url = environment.apiUrl + 'User'; 
         var headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': 'http://localhost:4200',
@@ -31,7 +31,7 @@ export class UserServie {
     }
 
     updatePassword(body: NewPassword) : Observable<User> {
-        const url = environment.apiUrl + 'user/updatePassword'; 
+        const url = environment.apiUrl + 'User/updatePassword'; 
         var headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': 'http://localhost:4200',
@@ -44,7 +44,7 @@ export class UserServie {
     }
 
     addCard(card: Cart): Observable<User> {
-        const url = environment.apiUrl + 'card'; 
+        const url = environment.apiUrl + 'Cart/create'; 
         var headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': 'http://localhost:4200',
@@ -57,7 +57,7 @@ export class UserServie {
     }
 
     getAllCards(id: string): Observable<Cart[]> {
-        const url = environment.apiUrl + 'card/All/'; 
+        const url = environment.apiUrl + 'Cart/filter/User/all/'; 
         var headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': 'http://localhost:4200',
@@ -70,7 +70,7 @@ export class UserServie {
     }
 
     deleteCard(id: string | null) {
-      const url = environment.apiUrl + 'card/delete/'; 
+      const url = environment.apiUrl + 'Cart/'; 
       var headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': 'http://localhost:4200',
@@ -80,20 +80,7 @@ export class UserServie {
       });
       return this.http.delete(url + `${id}`, {headers: headers})
       .pipe(catchError(this.handleError));
-    }
-
-    getOrderHistory(id: string) {
-        const url = environment.apiUrl + 'user/oderHistory/'; 
-        var headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': 'http://localhost:4200',
-            'Access-Control-Allow-Credentials': 'true',
-            'Access-Control-Allow-Headers': 'Content-Type',
-            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-          });
-        return this.http.get(url + `${id}`, {headers: headers})
-        .pipe(catchError(this.handleError));
-    }   
+    }  
 
     private handleError(error: HttpErrorResponse) {
         if (error.status === 0) {

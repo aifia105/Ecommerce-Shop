@@ -10,13 +10,13 @@ import { UserServie } from 'src/app/services/user.service';
 export class ChangePasswordComponent {
   updatePassword : NewPassword = {
     id: 0,
-    newPassword: '',
+    password: '',
     confirmPassword: '',
   }
   constructor(private UserService: UserServie) {}
 
   updatePasswordUser() {
-    if(this.updatePassword.newPassword === this.updatePassword.confirmPassword) {
+    if(this.updatePassword.password === this.updatePassword.confirmPassword) {
       this.updatePassword.id = JSON.parse(localStorage.getItem('user') || '{}').id;
       this.UserService.updatePassword(this.updatePassword).pipe().subscribe((user) => {
       localStorage.setItem('user', JSON.stringify(user));

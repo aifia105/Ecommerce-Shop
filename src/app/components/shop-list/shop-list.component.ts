@@ -6,6 +6,7 @@ import { shopActions } from './store/actions';
 import { cartActions } from '../cart/store/actions';
 import { wishlistActions } from '../wishlist/store/actions';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { selectProducts } from './store/reducers';
 
 @Component({
   selector: 'app-shop-list',
@@ -15,6 +16,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ShopListComponent implements OnInit {
   grid: boolean = true;
   isSelected: boolean = true;
+  products: Product[] = [];
 
   categories: Category[] = [
     { nameCategory: 'Apparel and accessories' },
@@ -28,6 +30,11 @@ export class ShopListComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(shopActions.getCategory());
     this.store.dispatch(shopActions.getProducts());
+    this.store.select(selectProducts).pipe().subscribe((data) => {
+      if (data !== null) {
+        this.products = data;
+      }
+    })
   }
 
   addToCart(product: Product) {
@@ -42,93 +49,6 @@ export class ShopListComponent implements OnInit {
       duration: 3000,
     });
   }
-
-  products: Product[] = [
-    {
-      name: 'iphone 7',
-      description: 'some text',
-      priceHt: 1000,
-      tva: 1000,
-      priceTTC: 2000,
-      pricture: 'assets/book.jpeg',
-      category: { nameCategory: 'Consumer electronics' },
-      avg_rating: 4,
-      CreationDate: '12/6/2000',
-      brand: 'apple',
-    },
-    {
-      name: 'iphone 7',
-      description: 'some text',
-      priceHt: 1000,
-      tva: 1000,
-      priceTTC: 2000,
-      pricture: 'assets/book.jpeg',
-      category: { nameCategory: 'Consumer electronics' },
-      avg_rating: 4,
-      CreationDate: '12/6/2000',
-      brand: 'apple',
-    },
-    {
-      name: 'iphone 7',
-      description: 'some text',
-      priceHt: 1000,
-      tva: 1000,
-      priceTTC: 2000,
-      pricture: 'assets/book.jpeg',
-      category: { nameCategory: 'Consumer electronics' },
-      avg_rating: 4,
-      CreationDate: '12/6/2000',
-      brand: 'apple',
-    },
-    {
-      name: 'iphone 7',
-      description: 'some text',
-      priceHt: 1000,
-      tva: 1000,
-      priceTTC: 2000,
-      pricture: 'assets/book.jpeg',
-      category: { nameCategory: 'Consumer electronics' },
-      avg_rating: 4,
-      CreationDate: '12/6/2000',
-      brand: 'apple',
-    },
-    {
-      name: 'iphone 7',
-      description: 'some text',
-      priceHt: 1000,
-      tva: 1000,
-      priceTTC: 2000,
-      pricture: 'assets/book.jpeg',
-      category: { nameCategory: 'Consumer electronics' },
-      avg_rating: 4,
-      CreationDate: '12/6/2000',
-      brand: 'apple',
-    },
-    {
-      name: 'iphone 7',
-      description: 'some text',
-      priceHt: 1000,
-      tva: 1000,
-      priceTTC: 2000,
-      pricture: 'assets/book.jpeg',
-      category: { nameCategory: 'Consumer electronics' },
-      avg_rating: 4,
-      CreationDate: '12/6/2000',
-      brand: 'apple',
-    },
-    {
-      name: 'iphone 7',
-      description: 'some text',
-      priceHt: 1000,
-      tva: 1000,
-      priceTTC: 2000,
-      pricture: 'assets/book.jpeg',
-      category: { nameCategory: 'Consumer electronics' },
-      avg_rating: 4,
-      CreationDate: '12/6/2000',
-      brand: 'apple',
-    },
-  ];
 
   changeview(grid: boolean) {
     this.grid = !this.grid;

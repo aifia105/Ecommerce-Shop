@@ -36,6 +36,7 @@ export const shopAddCategoryEffect = createEffect(
     return action$.pipe(
       ofType(shopActions.addCategory),
       switchMap(({ request }) => {
+        console.log(request);
         return category.addCategory(request).pipe(
           tap((response) => console.log('API Response: from effect', response)),
           map((category: Category) => {

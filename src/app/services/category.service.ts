@@ -28,6 +28,29 @@ export class CategoryService {
       .pipe(catchError(this.handleError));
   }
 
+  getCategoryByName(name: string): Observable<Category> {
+    const url = environment.apiUrl + 'Categorys/';
+    var headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'http://localhost:4200',
+      'Access-Control-Allow-Credentials': 'true',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+    });
+    console.log(name);
+    return this.http.get<Category>(url +  `${name}`, { headers : headers})
+    .pipe(map((data: any) => {
+      return {
+        id: data.id,
+        nameCategory: data.nameCategory,
+        image: data.image
+      } as Category;
+    }),
+    catchError(this.handleError)
+  
+    )
+  }
+
   addCategory(data: Category): Observable<Category> {
     const url = environment.apiUrl + 'Categorys/create';
     var headers = new HttpHeaders({

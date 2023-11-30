@@ -2,40 +2,31 @@ import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { Product } from "../models/product";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
-import { Observable, catchError, throwError } from "rxjs";
+import { Observable, catchError, map, throwError } from "rxjs";
+import { ProductService } from "./products.service";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class HeroService {
-    constructor(private http: HttpClient) {}
+    constructor(private productService: ProductService) {}
 
 
   getPopularProducts(): Observable<Product[]> {
-    const  url = environment.apiUrl +'products/Popular';
-    var headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:4200',
-        'Access-Control-Allow-Credentials': 'true',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-      });
-    return this.http.get<Product[]>(url, {headers: headers})
-    .pipe(catchError(this.handleError));
+    return this.productService.getAllProducts().pipe(
+      map((products) => {
+        return products.sort((a, b) => b.avg_rating - a.avg_rating);
+      })
+    ).pipe(catchError(this.handleError));
   }
 
   getNewProducts(): Observable<Product[]> {
-    const  url = environment.apiUrl +'products/New';
-    var headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': 'http://localhost:4200',
-      'Access-Control-Allow-Credentials': 'true',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
-    });
-    return this.http.get<Product[]>(url, {headers: headers})
-    .pipe(catchError(this.handleError));
+    return this.productService.getAllProducts().pipe(
+      map((products: Product[]) => {
+        return products.sort((a, b) => new Date(b.CreationDate).getTime() - new Date(a.CreationDate).getTime());
+      })
+    ).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -48,7 +48,7 @@
 <div class="container py-16">
     <h2 class="text-3xl font-medium text-gray-800 uppercase mb-6">Shop by category</h2>
     <div class="grid grid-cols-3 gap-3">
-        <div class="relative rounded-sm overflow-hidden group" *ngFor="let category of categorys">
+        <div class="relative rounded-sm overflow-hidden group" *ngFor="let category of category">
             <img [src]="category.image" class="w-full h-full" loading="lazy" priority>
             <a [routerLink]="['/search', category.nameCategory]" class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-xl text-white font-roboto font-medium group-hover:bg-opacity-50 transition">{{category.nameCategory}}</a>
         </div>
@@ -59,7 +59,7 @@
 <div class="container pb-16">
     <h2 class="text-3xl font-medium text-gray-800 uppercase mb-6">popular products</h2>
     <div class="grid grid-cols-4  gap-6 overflow-hidden">
-        <div class="bg-white shadow rounded  group" *ngFor="let product of products">
+        <div class="bg-white shadow rounded  group" *ngFor="let product of popularProducts">
             <div class="relative ">
                 <img [src]="product.pricture" class="w-full" height="200"  loading="lazy" priority>
                 <div class="absolute  inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
@@ -104,7 +104,7 @@
 <div class="container pb-16">
     <h2 class="text-3xl font-medium text-gray-800 uppercase mb-6">New products</h2>
     <div class="grid grid-cols-4 gap-6">
-        <div class="bg-white shadow rounded overflow-hidden group" *ngFor="let product of products">
+        <div class="bg-white shadow rounded overflow-hidden group" *ngFor="let product of newProducts">
             <div class="relative ">
                 <img [src]="product.pricture" class="w-full "  loading="lazy" priority>
                 <div class="absolute  inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition">

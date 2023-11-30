@@ -19,9 +19,9 @@ export class CategoryslistComponent implements OnDestroy {
     this.store.select(selectCategorys).pipe().subscribe((categories: Category[] | null) => {
       if (categories !== null) {
         this.categorys = categories;
+        console.log(this.categorys);
       }
     });
-    console.log(this.categorys);
   }
 
   ngOnDestroy() {

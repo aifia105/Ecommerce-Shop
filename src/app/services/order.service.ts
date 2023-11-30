@@ -13,7 +13,7 @@ export class OrderService {
     constructor(private http: HttpClient) {}
 
     createOrder(order: OrderClient): Observable<OrderClient> {
-        const url = environment.apiUrl + 'order/create';
+        const url = environment.apiUrl + 'OrderUser/create';
         var headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': 'http://localhost:4200',
@@ -21,12 +21,26 @@ export class OrderService {
             'Access-Control-Allow-Headers': 'Content-Type',
             'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
           });
+          console.log(order);
         return this.http.post<OrderClient>(url, order, {headers: headers})
         .pipe(catchError(this.handleError));
     }
 
+    getHistoryOrdersUser(id: string): Observable<OrderClient[]> {
+      const url = environment.apiUrl + 'History/OrderUser/';
+        var headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:4200',
+            'Access-Control-Allow-Credentials': 'true',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+          });
+      return this.http.get<OrderClient[]>(url + `${id}`, { headers: headers })
+      .pipe(catchError(this.handleError));
+    }
+
     getOrders(id: string): Observable<OrderClient[]> {
-        const url = environment.apiUrl + 'order/all';
+        const url = environment.apiUrl + 'OrderUser/';
         var headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': 'http://localhost:4200',

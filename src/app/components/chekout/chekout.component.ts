@@ -24,19 +24,23 @@ export class ChekoutComponent implements OnInit {
   ngOnInit(): void {
     this.store.select(selectOrder).subscribe((data) => {
       this.order = data;
+      console.log(this.order);
     });
     this.userAdderss = this.user.address.replace(/,/g, ', ').replace(/\s+/g, ' ');
     this.userService.getAllCards(this.user.id).subscribe((data) => {
       this.carts = data;
+      console.log(this.carts);
     });
   }
   confirmOrder() {
     if(this.selectedCard && this.userAdderss.length > 0) {
       let orderCopy = {...this.order};
       orderCopy.card = this.selectedCard;
+      console.log(orderCopy);
       this.orderService.createOrder(orderCopy).subscribe((data) => {
         this.router.navigate(['/validate']);
         this.store.dispatch(cartActions.clearCart());
+        console.log(data);
       });
     }
     

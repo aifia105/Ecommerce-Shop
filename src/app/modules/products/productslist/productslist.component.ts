@@ -19,6 +19,7 @@ export class ProductslistComponent implements OnDestroy {
     this.store.select(selectProducts).pipe().subscribe((products: Product[] | null) => {
        if(products !== null) {
         this.product = products;
+        console.log(this.product);
         }
         });     
 }

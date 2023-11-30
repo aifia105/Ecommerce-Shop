@@ -55,8 +55,9 @@ export class ProductService {
       .pipe(catchError(this.handleError));
   }
 
-  getAllProductsByCategory(category: string):Observable<Product[]> {
-    const url = environment.apiUrl + 'Prdocuts/All/bycategory/';
+  
+  getAllProductsByCategory(categoryId: string | undefined):Observable<Product[]> {
+    const url = environment.apiUrl + 'Prdocuts/filter/Category/';
     var headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'http://localhost:4200',
@@ -64,11 +65,11 @@ export class ProductService {
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
     });
-    return this.http.get<Product[]>(url + `${category}`, { headers: headers })
+    return this.http.get<Product[]>(url + `${categoryId}`, { headers: headers })
     .pipe(catchError(this.handleError));
   }
   getProductByName(name: string): Observable<Product[]> {
-    const url = environment.apiUrl + 'Prdocuts/All/byname/';
+    const url = environment.apiUrl + 'Prdocuts/';
     var headers = new HttpHeaders({
       'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': 'http://localhost:4200',

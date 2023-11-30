@@ -118,7 +118,7 @@
 <div class="container pb-16">
     <h2 class="text-3xl font-medium text-gray-800 uppercase mb-6">related products</h2>
     <div class="grid grid-cols-4  gap-6 overflow-hidden">
-        <div class="bg-white shadow rounded  group" *ngFor="let product of products">
+        <div class="bg-white shadow rounded  group" *ngFor="let product of relatedProducts">
             <div class="relative ">
                 <img [src]="product.pricture" class="w-full" height="200"  loading="lazy" priority>
                 <div class="absolute  inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition">

@@ -21,6 +21,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { ChekoutComponent } from './components/chekout/chekout.component';
 import { ValidationComponent } from './components/validation/validation.component';
+import { OrderHistoryComponent } from './components/user/order-history/order-history.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'hero', pathMatch: 'full' },
@@ -38,6 +39,7 @@ const routes: Routes = [
       { path: 'change-password', component: ChangePasswordComponent },
       { path: 'payment', component: PaymentComponent },
       { path: 'manage-card', component: ManageCardComponent },
+      { path: 'order-history', component: OrderHistoryComponent}
     ],
   },
   {

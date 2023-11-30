@@ -10,6 +10,6 @@ export interface Product {
   pricture: string;
   category: Category;
   avg_rating: number;
-  CreationDate: string;
+  CreationDate: Date;
   brand: string;
 }

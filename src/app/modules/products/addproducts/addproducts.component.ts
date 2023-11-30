@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { shopActions } from 'src/app/components/shop-list/store/actions';
+import { Category } from 'src/app/models/category';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-addproducts',
@@ -13,26 +15,36 @@ export class AddproductsComponent {
   form = this.fb.nonNullable.group({
     name: ['', Validators.required],
     description: ['', Validators.required],
-    price: ['', Validators.required],
-    image: ['', Validators.required],
+    price: [0 , Validators.required],
+    pricture: [ ''  , Validators.required],
     category: ['', Validators.required],
     brand: ['', Validators.required],
   });
-  constructor(private fb: FormBuilder, private store: Store) {}
+  constructor(private fb: FormBuilder, private store: Store, private categoryService: CategoryService) {}
 
   onSubmit() {
     if (this.form.valid) {
-      const request: any = new FormData();
-      request.append('name', this.form.get('name')?.value);
-      request.append('description', this.form.get('description')?.value);
-      request.append('price', this.form.get('price')?.value);
-      request.append('image', this.fileHolder as File);
-      request.append('category', this.form.get('category')?.value);
-      request.append('brand', this.form.get('brand')?.value);
-
-
-     // const request: any = this.form.getRawValue();
-      this.store.dispatch(shopActions.addProduct({ request }));
+      const reader = new FileReader();
+      reader.readAsDataURL(this.fileHolder as File);
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        const categoryName = this.form.get('category')?.value || '';
+        this.categoryService.getCategoryByName(categoryName).subscribe(category => {
+          const request = {
+            name: this.form.get('name')?.value || '',
+            description: this.form.get('description')?.value || '',
+            priceTTC: this.form.get('price')?.value || 0,
+            pricture: base64String,
+            category: category,
+            brand: this.form.get('brand')?.value || '',
+            CreationDate : new Date(),
+            avg_rating: 0,
+            tva: 0,
+            priceHt: 0,
+          }
+          this.store.dispatch(shopActions.addProduct({ request }));
+        });
+      };
     } else {
       this.store.dispatch(
         shopActions.addProductFailure({ erros: { error: 'form is not valid' } })

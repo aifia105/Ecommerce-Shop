@@ -27,9 +27,11 @@ export class ProductDetailComponent implements OnDestroy {
     console.log(this.id);
       this.productService.getProduct(this.id).pipe().subscribe((data) => {
         this.currentProduct = data;
+        console.log(this.currentProduct);
       });
-      this.productService.getAllProductsByCategory(this.currentProduct?.category.nameCategory).pipe().subscribe((data) => {
+      this.productService.getAllProductsByCategory(this.currentProduct?.category.id).pipe().subscribe((data) => {
         this.relatedProducts = data;
+        console.log(this.relatedProducts);
       });
   }
   addToCart(product: Product) {
@@ -49,74 +51,11 @@ export class ProductDetailComponent implements OnDestroy {
   ngOnDestroy() {
     this.unsubscribe$.unsubscribe();
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   quantityPlus(){
   this.quantity++;
   }
   quantityMinus(){
   this.quantity--;
   }
-  products : Product[] = [
-    {name : "iphone 7" ,
-    description :"some text",
-    priceHt : 1000,
-    tva : 1000,
-    priceTTC : 2000,
-    pricture : "assets/book.jpeg",
-    category : {nameCategory :"Consumer electronics"} ,
-    avg_rating : 4 ,
-    CreationDate : "12/6/2000",
-    brand : "apple"
-    },
-    {name : "iphone 7" ,
-    description :"some text",
-    priceHt : 1000,
-    tva : 1000,
-    priceTTC : 2000,
-    pricture : "assets/book.jpeg",
-    category : {nameCategory :"Consumer electronics"} ,
-    avg_rating : 4 ,
-    CreationDate : "12/6/2000",
-    brand : "apple"
-    },
-    {name : "iphone 7" ,
-    description :"some text",
-    priceHt : 1000,
-    tva : 1000,
-    priceTTC : 2000,
-    pricture : "assets/book.jpeg",
-    category : {nameCategory :"Consumer electronics"} ,
-    avg_rating : 4 ,
-    CreationDate : "12/6/2000",
-    brand : "apple"
-    },
-    {name : "iphone 7" ,
-    description :"some text",
-    priceHt : 1000,
-    tva : 1000,
-    priceTTC : 2000,
-    pricture : "assets/book.jpeg",
-    category : {nameCategory :"Consumer electronics"} ,
-    avg_rating : 4 ,
-    CreationDate : "12/6/2000",
-    brand : "apple"
-    }];
 
 }

@@ -17,12 +17,23 @@ export class AddcategorysComponent {
   constructor(private fb: FormBuilder, private store: Store) {}
   onSubmit() {
     if (this.form.valid) {
-      const request: any = new FormData();
-      request.append('name', this.form.get('name')?.value);
-      request.append('image', this.fileHolder as File);
-      
-      //const request: any = this.form.getRawValue();
-      this.store.dispatch(shopActions.addCategory({ request }));
+      const reader = new FileReader();
+      reader.readAsDataURL(this.fileHolder as File);
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        const request = {
+          nameCategory: this.form.get('name')?.value || '',
+          Image: base64String,
+        };
+        this.store.dispatch(shopActions.addCategory({ request }));
+        console.log(request);
+      } 
+      /*
+      const request = {
+        nameCategory: this.form.get('name')?.value || '',
+        Image: this.fileHolder as File
+      } 
+      */
     } else {
       this.store.dispatch(
         shopActions.addCategoryFailure({
