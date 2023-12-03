@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Role } from 'src/app/models/Role';
-import { UpdateUser } from 'src/app/models/updateUser';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from 'src/app/models/user';
 import { UserServie } from 'src/app/services/user.service';
 
@@ -10,12 +9,15 @@ import { UserServie } from 'src/app/services/user.service';
   styleUrls: ['./profile-information.component.scss']
 })
 export class ProfileInformationComponent {
-  user: UpdateUser = {
+  currentUser: User = this.UserService.getUser();
+  user: any = {
   fullName: '',
-  birthday: new Date() ,
-  picture: null,
-  adress: '',
+  birthday: new Date().toISOString() ,
+  image: null,
+  address: '',
   email: '',
+  password:'',
+  confirmpassword: '',
   phone: '',
   role: 'Client',
   }
@@ -23,14 +25,21 @@ export class ProfileInformationComponent {
   onFileSelected(event: any) {
     this.user.picture = event.target.files[0];
   }
-  constructor(private UserService: UserServie) {}
+  constructor(private UserService: UserServie, private sncakBar: MatSnackBar) {}
   
   updateUser() {
-    this.UserService.updateUser(this.user).pipe().subscribe((user) => {
+    this.user.birthday = new Date(this.user.birthday);
+    if(this.user.password == this.user.confirmpassword) {
+      this.UserService.updateUser(this.user,this.currentUser.id).pipe().subscribe((user) => {
       localStorage.setItem('user', JSON.stringify(user));
       alert('Update successfull');
-    });
-    console.log(this.user);
+      });
+      console.log(this.user);
+    } else {
+      this.sncakBar.open('Password and Confirm Password are not the same', 'Close', {
+        duration: 3000,
+      });
+    }
   }
 
 }

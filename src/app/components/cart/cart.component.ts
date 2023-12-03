@@ -19,16 +19,17 @@ export class CartComponent implements OnInit {
   total: number = 0;
   user = JSON.parse(localStorage.getItem('user') || '{}');
   order: OrderClient = {
+    id: '',
     dateOrder: new Date(),
     orderStatus: 'pending',
-    user: this.user,
-    product:[],
+    userDto: this.user,
+    itemOrderUserDtos:[],
     total: 0,
-    card: {
+    cartDto: {
       id: '',
       cardNumber: 0,
-      cardHolderName: '',
-      experationDate: new Date(),
+      cardholderName: '',
+      expirationDate: new Date(),
       cvv: 0,
     }
   };
@@ -38,9 +39,9 @@ export class CartComponent implements OnInit {
     this.store.select(selectItems).subscribe((data) => {
       this.products = data;
       this.total = this.products.reduce((acc, product) => acc + product.total, 0);
-      this.order.product = this.products;
+      this.order. itemOrderUserDtos = this.products;
       this.order.total = this.total;
-      this.order.user = this.user;
+      this.order.userDto = this.user;
       this.order.dateOrder = new Date();
       this.order.orderStatus = 'submitted'
     });

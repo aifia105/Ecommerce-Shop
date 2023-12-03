@@ -34,8 +34,8 @@ export class ProductDetailComponent implements OnDestroy {
         console.log(this.relatedProducts);
       });
   }
-  addToCart(product: Product) {
-    this.store.dispatch(cartActions.addToCart({ cartProduct: { product, quantity: this.quantity, total: product.priceTTC * this.quantity  }}));
+  addToCart(productDto: Product) {
+    this.store.dispatch(cartActions.addToCart({ cartProduct: { productDto, quantity: this.quantity, total: productDto.priceTTC * this.quantity  }}));
     this.sncakBar.open('Product has been added to the cart', 'Close', {
       duration: 3000,
     });

@@ -5,11 +5,9 @@ export interface Product {
   name: string;
   description: string;
   priceTTC: number;
-  priceHt: number;
-  tva:number;
-  pricture: string;
+  image: string;
   category: Category;
-  avg_rating: number;
-  CreationDate: Date;
+  rating: number;
   brand: string;
+  CreationDate: Date;
 }

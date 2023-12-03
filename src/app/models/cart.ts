@@ -1,7 +1,9 @@
+import { User } from "./user";
+
 export interface Cart {
   id: string | null;
   cardNumber: number;
-  cardHolderName: string;
-  experationDate: Date;
+  cardholderName: string;
+  expirationDate: Date;
   cvv: number;
 }

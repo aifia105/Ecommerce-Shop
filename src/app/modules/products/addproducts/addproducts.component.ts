@@ -34,11 +34,11 @@ export class AddproductsComponent {
             name: this.form.get('name')?.value || '',
             description: this.form.get('description')?.value || '',
             priceTTC: this.form.get('price')?.value || 0,
-            pricture: base64String,
+            image: base64String,
             category: category,
             brand: this.form.get('brand')?.value || '',
             CreationDate : new Date(),
-            avg_rating: 0,
+            rating: 0,
             tva: 0,
             priceHt: 0,
           }

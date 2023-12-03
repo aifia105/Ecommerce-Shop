@@ -31,8 +31,18 @@
                     <input name="picture" (change)="onFileSelected($event)" type="file" class="block w-72 border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400">
                 </div>
                     <div>
-                        <label for="address" class="text-gray-600 mb-2 block">Adress:</label>
-                        <input name="address" [(ngModel)]="user.adress" type="text" class="block w-72 border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Your address">
+                        <label for="address" class="text-gray-600 mb-2 block">Address:</label>
+                        <input name="address" [(ngModel)]="user.address" type="text" class="block w-72 border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Your address">
+                    </div>
+            </div>
+            <div class="flex gap-4">
+                <div>
+                    <label for="password" class="text-gray-600 mb-2 block">Password:</label>
+                    <input name="password" [(ngModel)]="user.password" type="password" class="block w-72 border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Password">
+                </div>
+                    <div>
+                        <label for="password" class="text-gray-600 mb-2 block">Confirm password:</label>
+                        <input name="confirmpassword" [(ngModel)]="user.confirmpassword" type="password" class="block w-72 border border-gray-300 px-4 py-3 text-gray-600 text-sm rounded focus:ring-0 focus:border-primary placeholder-gray-400" placeholder="Confirm password">
                     </div>
             </div>
            

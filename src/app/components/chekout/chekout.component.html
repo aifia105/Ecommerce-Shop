@@ -20,9 +20,9 @@
             <img src="assets/card.png" alt="productImage" class="w-12">
         </div>
         <div class=" flex gap-60">
-            <p class="text-gray-800  font-poppins font-medium uppercase">{{cart.cardHolderName}}</p>
+            <p class="text-gray-800  font-poppins font-medium uppercase">{{cart.cardholderName}}</p>
             <p  class="text-gray-500 font-poppins font-medium">{{cart.cardNumber}}</p>
-            <p  class="text-gray-500 font-poppins font-medium">{{cart.experationDate | date}}</p>     
+            <p  class="text-gray-500 font-poppins font-medium">{{cart.expirationDate | date}}</p>     
         </div>   
         <div >
             <input type="radio" class="text-primary"  name="card" [(ngModel)]="selectedCard" [value]="cart">
@@ -47,7 +47,7 @@
         <div class="flex items-center gap-6 p-4  ">
             <p class="text-gray-800  font-semibold">Name:</p>
             
-                <p class="text-gray-800  font-medium">{{order.user.fullName}}</p>
+                <p class="text-gray-800  font-medium">{{order.userDto.fullName}}</p>
             
         </div> 
         <div class="flex  items-center gap-6 p-4  ">
@@ -62,10 +62,10 @@
         </div> 
         <div class=" gap-6 p-4">
         <p class="text-gray-800  font-semibold">Items:</p>
-        <div *ngFor="let item of order.product" class="border  mt-2 border-gray-300">
+        <div *ngFor="let item of order. itemOrderUserDtos" class="border  mt-2 border-gray-300">
             <div class="flex items-center justify-between px-12">
-                <p class="text-gray-800  font-medium"> {{item.product.name}}</p>
-                <p class="text-gray-800  font-medium"> {{item.product.priceTTC | currency}}</p>
+                <p class="text-gray-800  font-medium"> {{item.productDto.name}}</p>
+                <p class="text-gray-800  font-medium"> {{item.productDto.priceTTC | currency}}</p>
             </div>
         </div>
         </div>

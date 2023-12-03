@@ -7,6 +7,7 @@ export interface UpdateUser {
   adress: string;
   picture: File | null;
   email: string;
+  password: string;
   phone: string;
   role: string;
 }

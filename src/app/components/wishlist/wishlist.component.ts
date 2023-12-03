@@ -43,8 +43,8 @@ export class WishlistComponent implements OnInit {
     this.store.dispatch(wishlistActions.clearWishlist());
   }
 
-  addToCart(product: Product) {
-    this.store.dispatch(cartActions.addToCart({ cartProduct: { product, quantity: 1, total: product.priceTTC * 1  }}));
+  addToCart(productDto: Product) {
+    this.store.dispatch(cartActions.addToCart({ cartProduct: { productDto, quantity: 1, total: productDto.priceTTC * 1  }}));
     this.sncakBar.open('Product has been added to the cart', 'Close', {
       duration: 3000,
     });

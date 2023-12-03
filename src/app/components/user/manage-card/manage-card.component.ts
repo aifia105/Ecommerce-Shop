@@ -9,16 +9,19 @@ import { UserServie } from 'src/app/services/user.service';
   styleUrls: ['./manage-card.component.scss']
 })
 export class ManageCardComponent {
+  expirationDate: string = '';
   card : Cart = {
     id: null,
     cardNumber: 0,
-    cardHolderName: '',
-    experationDate: new Date(),
-    cvv: 0
+    cardholderName: '',
+    expirationDate: new Date(),
+    cvv: 0,
   };
   constructor(private UserService: UserServie, private route:Router) {}
 
   addCard() {
+    this.expirationDate = new Date(this.card.expirationDate).toISOString();
+    this.card.expirationDate = new Date(this.expirationDate);
     this.UserService.addCard(this.card).pipe().subscribe(() => {
       this.route.navigate(['/user/payment']);
     })

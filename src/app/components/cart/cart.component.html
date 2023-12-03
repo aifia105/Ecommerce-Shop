@@ -16,26 +16,26 @@
     
     <div *ngFor="let product of products" class="flex items-center mb-3 justify-between gap-6 p-4 border border-gray-200 rounded">
         <div class="w-36">
-            <img [src]="product.product.pricture" alt="productImage" class="w-full">
+            <img [src]="product.productDto.image" alt="productImage" class="w-full">
         </div>
         <div class="w-1/3">
-            <p class="text-gray-800 text-xl font-poppins font-medium uppercase">{{product.product.name}}</p>
+            <p class="text-gray-800 text-xl font-poppins font-medium uppercase">{{product.productDto.name}}</p>
         </div>
         <!-- price -->
-        <h2 class="text-gray-800 text-lg font-medium">{{product.product.priceTTC| currency}}</h2>
+        <h2 class="text-gray-800 text-lg font-medium">{{product.productDto.priceTTC| currency}}</h2>
 
          <!-- quangtity -->
     <div>
         <div class="flex border border-gray-300 text-gray-600 divide-x divide-gray-300 w-max">
-            <div class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none" (click)="quantityMinus(product.product.id, product.product.priceTTC)">-</div>
+            <div class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none" (click)="quantityMinus(product.productDto.id, product.productDto.priceTTC)">-</div>
             <div class="h-8 w-8 text-base flex items-center justify-center">{{product.quantity| number}}</div>
-            <div class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none" (click)="quantityPlus(product.product.id, product.product.priceTTC)">+</div>
+            <div class="h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none" (click)="quantityPlus(product.productDto.id, product.productDto.priceTTC)">+</div>
         </div>
     </div>
     <!-- total -->
     <h2 class="text-gray-800 text-lg font-medium">{{product.total| currency}}</h2>
     <!-- remove -->
-        <div (click)="removeFromCart(product.product.id)" class="text-gray-600 cursor-pointer hover:text-primary">
+        <div (click)="removeFromCart(product.productDto.id)" class="text-gray-600 cursor-pointer hover:text-primary">
             <i class="fas fa-trash"></i>
         </div>
     </div>

@@ -29,7 +29,7 @@ export class CategoryService {
   }
 
   getCategoryByName(name: string): Observable<Category> {
-    const url = environment.apiUrl + 'Categorys/';
+    const url = environment.apiUrl + 'Categorys/byName/';
     var headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': 'http://localhost:4200',

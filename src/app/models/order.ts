@@ -7,7 +7,7 @@ export interface OrderClient {
   dateOrder: Date;
   total: number;
   orderStatus: string;
-  user: User;
-  product: CartProduct[];
-  card: Cart;
+  userDto: User;
+  itemOrderUserDtos: CartProduct[];
+  cartDto: Cart;
 }

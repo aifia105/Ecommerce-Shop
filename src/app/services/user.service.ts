@@ -17,8 +17,8 @@ export class UserServie {
         return JSON.parse(localStorage.getItem('user') || '{}');
     }
 
-    updateUser(user: UpdateUser): Observable<User> {
-        const url = environment.apiUrl + 'User'; 
+    updateUser(user: UpdateUser, id:string | undefined): Observable<User> {
+        const url = environment.apiUrl + 'User/update/'; 
         var headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': 'http://localhost:4200',
@@ -26,7 +26,7 @@ export class UserServie {
             'Access-Control-Allow-Headers': 'Content-Type',
             'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
           });
-        return this.http.post<User>(url, user, {headers: headers})
+        return this.http.post<User>(url + `${id}` , user  , {headers: headers})
         .pipe(catchError(this.handleError));
     }
 
@@ -65,7 +65,7 @@ export class UserServie {
             'Access-Control-Allow-Headers': 'Content-Type',
             'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
           });
-        return this.http.get<Cart[]>(url + + `${id}`, {headers: headers})
+        return this.http.get<Cart[]>(url +  `${id}`, {headers: headers})
         .pipe(catchError(this.handleError));
     }
 

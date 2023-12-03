@@ -23,14 +23,14 @@ const cartFeature = createFeature({
             ...state,
             status: 'deleting',
             validatonError: null,
-            items: state.items.filter(item => item.product.id !== action.productId)
+            items: state.items.filter(item => item.productDto.id !== action.productId)
         })),
         on(cartActions.updateQuantity, (state, action) => ({
             ...state,
             status: 'updating',
             validatonError: null,
             items: state.items.map(item => {
-                if(item.product.id === action.productId){
+                if(item.productDto.id === action.productId){
                     return {
                         ...item,
                         quantity: action.quantity
@@ -44,7 +44,7 @@ const cartFeature = createFeature({
             status: 'updating',
             validatonError: null,
             items: state.items.map(item => {
-                if(item.product.id === action.productId){
+                if(item.productDto.id === action.productId){
                     return {
                         ...item,
                         total: action.total

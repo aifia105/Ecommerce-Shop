@@ -19,6 +19,7 @@ export class PaymentComponent implements OnDestroy {
     this.subscription$.add(
       this.UserService.getAllCards(this.UserId).pipe().subscribe((cards) => {
         this.card = cards;
+        console.log(this.card);
       })
     )
   }

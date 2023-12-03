@@ -4,11 +4,11 @@ export interface User {
   id?: string;
   fullName: string;
   birthday: Date;
-  adress: string;
+  address: string;
   picture: string | null;
   email: string;
   password: string;
   phone: string;
   token: string;
-  role: Role;
+  role: string;
 }

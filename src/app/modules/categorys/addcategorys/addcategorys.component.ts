@@ -16,24 +16,24 @@ export class AddcategorysComponent {
   });
   constructor(private fb: FormBuilder, private store: Store) {}
   onSubmit() {
-    if (this.form.valid) {
+    if (this.form.valid && this.fileHolder) {
       const reader = new FileReader();
-      reader.readAsDataURL(this.fileHolder as File);
-      reader.onloadend = () => {
-        const base64String = reader.result as string;
+      reader.readAsArrayBuffer(this.fileHolder);
+      reader.onload = (event) => {
+        const fileContent = event.target?.result as ArrayBuffer;
+        const byteArray = new Uint8Array(fileContent);
+
         const request = {
           nameCategory: this.form.get('name')?.value || '',
-          Image: base64String,
+          image: Array.from(byteArray),
         };
+
         this.store.dispatch(shopActions.addCategory({ request }));
-        console.log(request);
-      } 
-      /*
-      const request = {
-        nameCategory: this.form.get('name')?.value || '',
-        Image: this.fileHolder as File
-      } 
-      */
+   
+      };
+     
+
+  
     } else {
       this.store.dispatch(
         shopActions.addCategoryFailure({

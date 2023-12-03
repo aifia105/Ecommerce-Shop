@@ -15,7 +15,7 @@ export class RegisterComponent {
   isSubmitted = false;
   form = this.fb.nonNullable.group({
     fullName: ['', Validators.required],
-    birthday: ['', Validators.required],
+    birthday: ['' , Validators.required],
     address: ['', Validators.required],
     phone: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
@@ -33,7 +33,11 @@ export class RegisterComponent {
     console.log('form', this.form.getRawValue());
     if (this.form.valid) {
       if (this.form.value.password === this.form.value.confirmpassword) {
-        const request: RegisterRequest = this.form.getRawValue();
+        const formValue = this.form.getRawValue();
+        const request: RegisterRequest = {
+          ...formValue,
+          birthday: new Date(formValue.birthday)
+        };
         this.store.dispatch(authActions.register({ request }));
       } else {
         const errorMessage = 'Password mismatch !';

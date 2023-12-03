@@ -16,7 +16,7 @@ export class HeroService {
   getPopularProducts(): Observable<Product[]> {
     return this.productService.getAllProducts().pipe(
       map((products) => {
-        return products.sort((a, b) => b.avg_rating - a.avg_rating);
+        return products.sort((a, b) => b.rating - a.rating);
       })
     ).pipe(catchError(this.handleError));
   }

@@ -58,8 +58,8 @@ export class HeroComponent implements OnDestroy {
       this.changeImage();
     }, 6000);
   }
-  addToCart(product: Product) {
-    this.store.dispatch(cartActions.addToCart({ cartProduct: { product, quantity: 1, total: product.priceTTC  }}));
+  addToCart(productDto: Product) {
+    this.store.dispatch(cartActions.addToCart({ cartProduct: { productDto, quantity: 1, total: productDto.priceTTC  }}));
     this.sncakBar.open('Product has been added to the cart', 'Close', {
       duration: 3000,
     });

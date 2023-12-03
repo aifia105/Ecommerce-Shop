@@ -6,15 +6,15 @@ const initialState: chekoutStateInterface = {
     order: {
         dateOrder: new Date(),
         orderStatus: 'pending',
-        user: JSON.parse(localStorage.getItem('user') || '{}'),
-        product:[],
+        userDto: JSON.parse(localStorage.getItem('user') || '{}'),
+        itemOrderUserDtos:[],
         total: 0,
-        card: {
+        cartDto: {
             id: '',
             cardNumber: 0,
-            cardHolderName: '',
-            experationDate: new Date(),
-            cvv: 0,
+            cardholderName: '',
+            expirationDate: new Date(),
+            cvv: 0
         }
     
     },

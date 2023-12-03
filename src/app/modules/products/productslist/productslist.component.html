@@ -37,7 +37,7 @@
         >
           <td class="flex gap-x-4 items-center py-4 pl-10">
             <img
-              [src]="pro.pricture"
+              [src]="pro.image"
               alt="product_img"
               class="w-40 aspect[3/2] rounded-lg object-cover object-top border border-gray-200"
             />
@@ -57,14 +57,14 @@
               <div
                 class="flex gap-1 text-sm text-yellow-400"
                 *ngFor="
-                  let i of [].constructor(pro.avg_rating);
+                  let i of [].constructor(pro.rating);
                   let index = index
                 "
               >
                 <span><i class="fas fa-star"></i></span>
               </div>
               <div class="text-xs text-gray-600">
-                {{ "(" + pro.avg_rating + "/5)" }}
+                {{ "(" + pro.rating + "/5)" }}
               </div>
             </div>
           </td>

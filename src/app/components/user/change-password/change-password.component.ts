@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NewPassword } from 'src/app/models/newPassword';
 import { UserServie } from 'src/app/services/user.service';
 
@@ -9,22 +10,26 @@ import { UserServie } from 'src/app/services/user.service';
 })
 export class ChangePasswordComponent {
   updatePassword : NewPassword = {
-    id: 0,
+    id : JSON.parse(localStorage.getItem('user') || '{}').id,
     password: '',
-    confirmPassword: '',
+    confirmPassWord: '',
   }
-  constructor(private UserService: UserServie) {}
+  constructor(private UserService: UserServie, private sncakBar: MatSnackBar) {}
 
   updatePasswordUser() {
-    if(this.updatePassword.password === this.updatePassword.confirmPassword) {
+    if(this.updatePassword.password === this.updatePassword.confirmPassWord) {
       this.updatePassword.id = JSON.parse(localStorage.getItem('user') || '{}').id;
       this.UserService.updatePassword(this.updatePassword).pipe().subscribe((user) => {
       localStorage.setItem('user', JSON.stringify(user));
-      alert('Update successfull');
+      this.sncakBar.open('Password update successfull', 'Close', {
+        duration: 3000,
+      });
       });
       console.log(this.updatePassword);
     } else {
-      alert('Password not match');
+      this.sncakBar.open('Password not match', 'Close', {
+        duration: 3000,
+      });    
     }
   }
 
