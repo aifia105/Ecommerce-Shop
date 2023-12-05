@@ -6,4 +6,5 @@ export interface Cart {
   cardholderName: string;
   expirationDate: Date;
   cvv: number;
+  user: User;
 }

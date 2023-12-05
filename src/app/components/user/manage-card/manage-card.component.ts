@@ -16,6 +16,7 @@ export class ManageCardComponent {
     cardholderName: '',
     expirationDate: new Date(),
     cvv: 0,
+    user: JSON.parse(localStorage.getItem('user') || '{}')
   };
   constructor(private UserService: UserServie, private route:Router) {}
 

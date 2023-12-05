@@ -31,6 +31,7 @@ export class CartComponent implements OnInit {
       cardholderName: '',
       expirationDate: new Date(),
       cvv: 0,
+      user : this.user
     }
   };
   constructor(private store: Store, private route: Router, private orderService: OrderService) {}

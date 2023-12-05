@@ -87,7 +87,7 @@ export const shopAddProductEffect = createEffect(
       switchMap(({ request }) => {
         return product.addProduct(request).pipe(
           map((product: Product) => {
-            route.navigate(['/products/Productlist']);
+            route.navigate(['/products/Productslist']);
             return shopActions.addProductSuccess({ product });
           }),
           catchError((errorResponse: HttpErrorResponse) => {

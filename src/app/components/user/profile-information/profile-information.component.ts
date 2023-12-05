@@ -9,7 +9,7 @@ import { UserServie } from 'src/app/services/user.service';
   styleUrls: ['./profile-information.component.scss']
 })
 export class ProfileInformationComponent {
-  currentUser: User = this.UserService.getUser();
+  currentUser = JSON.parse(localStorage.getItem('user') || '{}');
   user: any = {
   fullName: '',
   birthday: new Date().toISOString() ,

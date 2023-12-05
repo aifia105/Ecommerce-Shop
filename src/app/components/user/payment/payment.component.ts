@@ -1,4 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { Cart } from 'src/app/models/cart';
 import { UserServie } from 'src/app/services/user.service';
@@ -20,8 +21,7 @@ export class PaymentComponent implements OnDestroy {
       this.UserService.getAllCards(this.UserId).pipe().subscribe((cards) => {
         this.card = cards;
         console.log(this.card);
-      })
-    )
+        }));
   }
 
   deleteCard(id: string | null) {

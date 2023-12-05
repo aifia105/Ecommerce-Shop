@@ -2,32 +2,44 @@ import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { Product } from "../models/product";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
-import { Observable, catchError, map, throwError } from "rxjs";
+import { Observable, catchError, map, of, throwError } from "rxjs";
 import { ProductService } from "./products.service";
+import { Store } from "@ngrx/store";
+import { shopActions } from "../components/shop-list/store/actions";
+import { selectProducts } from "../components/shop-list/store/reducers";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class HeroService {
-    constructor(private productService: ProductService) {}
+  products: Product[] = [];
+    constructor( private store: Store) {}
 
 
-  getPopularProducts(): Observable<Product[]> {
-    return this.productService.getAllProducts().pipe(
-      map((products) => {
-        return products.sort((a, b) => b.rating - a.rating);
-      })
-    ).pipe(catchError(this.handleError));
+  getAllProducts(): Observable<Product[]> {
+    this.store.dispatch(shopActions.getProducts());
+    this.store
+      .select(selectProducts)
+      .pipe()
+      .subscribe(async (product: Product[] | null) => {
+        if (product !== null) {
+          this.products = product.map((product) => {
+            if (product.image) {
+              return {
+                ...product,
+                image: 'data:image/jpeg;base64,' + product.image,
+              };
+            }
+            return product;
+          });
+          console.log(this.products);
+        }
+      });
+      console.log(this.products);
+      return of(this.products);     
   }
 
-  getNewProducts(): Observable<Product[]> {
-    return this.productService.getAllProducts().pipe(
-      map((products: Product[]) => {
-        return products.sort((a, b) => new Date(b.CreationDate).getTime() - new Date(a.CreationDate).getTime());
-      })
-    ).pipe(catchError(this.handleError));
-  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {

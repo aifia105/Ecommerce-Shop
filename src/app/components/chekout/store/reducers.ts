@@ -14,7 +14,8 @@ const initialState: chekoutStateInterface = {
             cardNumber: 0,
             cardholderName: '',
             expirationDate: new Date(),
-            cvv: 0
+            cvv: 0,
+            user : JSON.parse(localStorage.getItem('user') || '{}')
         }
     
     },

@@ -46,7 +46,14 @@ const authFeature = createFeature({
       status: 'error',
       validatonError: action.erros,
       isLogin: false,
-    }))
+    })),
+    on(authActions.getUser, (state, action ) => ({
+      ...state,
+      status: 'loading',
+      validatonError: null,
+      currentUser: action.user,
+    })),
+    
   ),
 });
 

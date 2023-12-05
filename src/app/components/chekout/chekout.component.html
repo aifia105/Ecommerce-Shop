@@ -15,7 +15,7 @@
 <div class="container  items-start border border-gray-300 gap-6 mt-6 mb-16 pt-4 pb-16">
     <h1 class="text-gray-800 text-sm font-poppins font-semibold mb-5 uppercase ">Payement</h1>
     <h1 class="text-gray-800 text-sm font-poppins font-medium   ">Confim Card:</h1>
-    <div *ngFor="let cart of cartss"  class="flex items-center  mb-4 justify-between gap-6 p-4 border border-gray-200 rounded">
+    <div *ngFor="let cart of carts"  class="flex items-center  mb-4 justify-between gap-6 p-4 border border-gray-200 rounded">
         <div class="w-36">
             <img src="assets/card.png" alt="productImage" class="w-12">
         </div>
@@ -65,6 +65,7 @@
         <div *ngFor="let item of order. itemOrderUserDtos" class="border  mt-2 border-gray-300">
             <div class="flex items-center justify-between px-12">
                 <p class="text-gray-800  font-medium"> {{item.productDto.name}}</p>
+                <p class="text-gray-800  font-medium"> {{item.quantity}}</p>
                 <p class="text-gray-800  font-medium"> {{item.productDto.priceTTC | currency}}</p>
             </div>
         </div>

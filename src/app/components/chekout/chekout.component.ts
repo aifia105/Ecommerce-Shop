@@ -36,6 +36,15 @@ export class ChekoutComponent implements OnInit {
     if(this.selectedCard && this.userAdderss.length > 0) {
       let orderCopy = {...this.order};
       orderCopy.cartDto = this.selectedCard;
+      orderCopy.itemOrderUserDtos = orderCopy.itemOrderUserDtos.map((item) => {
+        let newProduct = {...item.productDto};
+        if(typeof newProduct.image === 'string') {
+          
+          newProduct.image = newProduct.image.replace('data:image/jpeg;base64,', '');
+          return {...item, productDto: newProduct};
+        }
+        return item;
+      })
       console.log(orderCopy);
       this.orderService.createOrder(orderCopy).subscribe((data) => {
         this.router.navigate(['/validate']);
@@ -45,13 +54,4 @@ export class ChekoutComponent implements OnInit {
     }
     
   }
-  cartss : Cart[] = [
-    {
-      id: '1',
-      cardNumber: 1223266399326964,
-      cardholderName: 'Sterling',
-      expirationDate: new Date(2022, 11),
-      cvv: 223,
-      }, 
-  ] ;
 }

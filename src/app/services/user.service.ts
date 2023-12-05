@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { User } from "../models/user";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
-import { Observable, catchError, throwError } from "rxjs";
+import { Observable, catchError, of, tap, throwError } from "rxjs";
 import { NewPassword } from "../models/newPassword";
 import { Cart } from "../models/cart";
 import { UpdateUser } from "../models/updateUser";
@@ -13,8 +13,9 @@ import { UpdateUser } from "../models/updateUser";
 
 export class UserServie {
     constructor(private http: HttpClient) {}
-    getUser() {
-        return JSON.parse(localStorage.getItem('user') || '{}');
+    getUser(): Observable<User> {
+      const user = JSON.parse(localStorage.getItem('user') || '{}');
+      return of(user);
     }
 
     updateUser(user: UpdateUser, id:string | undefined): Observable<User> {
@@ -66,7 +67,7 @@ export class UserServie {
             'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
           });
         return this.http.get<Cart[]>(url +  `${id}`, {headers: headers})
-        .pipe(catchError(this.handleError));
+        .pipe(tap(response => console.log('API Response: from effect', response)),catchError(this.handleError));
     }
 
     deleteCard(id: string | null) {

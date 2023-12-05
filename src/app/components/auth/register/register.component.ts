@@ -12,12 +12,14 @@ import { combineLatest } from 'rxjs';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
+  fileHolder: File | null = null;
   isSubmitted = false;
-  form = this.fb.nonNullable.group({
+  form = this.fb.group({
     fullName: ['', Validators.required],
     birthday: ['' , Validators.required],
     address: ['', Validators.required],
     phone: ['', Validators.required],
+    image: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.min(8)]],
     confirmpassword: ['', [Validators.required, Validators.min(8)]],
@@ -31,14 +33,32 @@ export class RegisterComponent {
 
   onSubmit() {
     console.log('form', this.form.getRawValue());
-    if (this.form.valid) {
+    if (this.form.valid && this.fileHolder) {
       if (this.form.value.password === this.form.value.confirmpassword) {
-        const formValue = this.form.getRawValue();
-        const request: RegisterRequest = {
-          ...formValue,
-          birthday: new Date(formValue.birthday)
-        };
-        this.store.dispatch(authActions.register({ request }));
+        
+
+        const reader = new FileReader();
+        reader.readAsArrayBuffer(this.fileHolder);
+        reader.onload = (event) => {
+          const fileContent = event.target?.result as ArrayBuffer;
+          const byteArray = new Uint8Array(fileContent);
+
+          const request: RegisterRequest = {
+            fullName: this.form.get('fullName')?.value || '',
+            email: this.form.get('email')?.value || '',
+            address: this.form.get('address')?.value || '',
+            phone: this.form.get('phone')?.value || '',
+            password: this.form.get('password')?.value || '',
+            role: this.form.get('role')?.value || '',
+            image: Array.from(byteArray),
+            birthday: new Date(this.form.get('birthday')?.value || ''),
+          };
+
+          console.log('request', request);
+
+          this.store.dispatch(authActions.register({ request }));
+        }   
+        console.log(this.fileHolder);
       } else {
         const errorMessage = 'Password mismatch !';
         this.showAlert(errorMessage);
@@ -52,6 +72,12 @@ export class RegisterComponent {
       this.store.dispatch(
         authActions.registerFailure({ erros: { error: errorMessage } })
       );
+    }
+  }
+
+  onFileChange(event: any) {
+    if(event.target.files.length > 0){
+      this.fileHolder = event.target.files[0];
     }
   }
   showAlert(message: string) {

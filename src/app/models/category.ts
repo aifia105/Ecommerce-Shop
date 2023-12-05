@@ -1,5 +1,5 @@
 export interface Category {
   id?: string;
   nameCategory: string;
-  image?: number[];
+  image?: number[] | string  ;
 }

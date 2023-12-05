@@ -1,4 +1,4 @@
-import { createActionGroup, props } from '@ngrx/store';
+import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { AuthentificationRequest } from 'src/app/models/auth/authenticationRequest';
 import { RegisterRequest } from 'src/app/models/auth/registerRequest';
 import { BackendErrors } from 'src/app/models/backendErrors';
@@ -13,5 +13,7 @@ export const authActions = createActionGroup({
     Login: props<{ request: AuthentificationRequest }>(),
     'Login success': props<{ user: User }>(),
     'Login failure': props<{ erros: BackendErrors }>(),
+    'Get user': props<{ user: User }>(),
+
   },
 });

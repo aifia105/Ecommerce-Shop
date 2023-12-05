@@ -51,6 +51,7 @@ export const loginEffect = createEffect(
       ofType(authActions.login),
       switchMap(({ request }) => {
         return authService.login(request).pipe(
+          tap(response => console.log('API Response: from effect', response)),
           map((user: User) => {
             route.navigate(['hero']);
             persistance.set('user', user);

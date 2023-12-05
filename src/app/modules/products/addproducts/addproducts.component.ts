@@ -23,24 +23,23 @@ export class AddproductsComponent {
   constructor(private fb: FormBuilder, private store: Store, private categoryService: CategoryService) {}
 
   onSubmit() {
-    if (this.form.valid) {
+    if (this.form.valid && this.fileHolder) {
       const reader = new FileReader();
-      reader.readAsDataURL(this.fileHolder as File);
-      reader.onloadend = () => {
-        const base64String = reader.result as string;
+      reader.readAsArrayBuffer(this.fileHolder);
+      reader.onload = (event) => {
+        const fileContent = event.target?.result as ArrayBuffer;
+        const byteArray = new Uint8Array(fileContent);
         const categoryName = this.form.get('category')?.value || '';
         this.categoryService.getCategoryByName(categoryName).subscribe(category => {
           const request = {
             name: this.form.get('name')?.value || '',
             description: this.form.get('description')?.value || '',
             priceTTC: this.form.get('price')?.value || 0,
-            image: base64String,
+            image: Array.from(byteArray),
             category: category,
             brand: this.form.get('brand')?.value || '',
             CreationDate : new Date(),
-            rating: 0,
-            tva: 0,
-            priceHt: 0,
+            rating: 5,
           }
           this.store.dispatch(shopActions.addProduct({ request }));
         });

@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AuthentificationRequest } from 'src/app/models/auth/authenticationRequest';
 import { authActions } from '../store/actions';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent {
     login: ['', Validators.required],
     password: ['', Validators.required],
   });
-  constructor(private fb: FormBuilder, private store: Store) {}
+  constructor(private fb: FormBuilder, private store: Store, private sncakBar: MatSnackBar) {}
   onSubmit() {
     if (this.form.valid) {
       console.log('form', this.form.getRawValue());
@@ -25,6 +26,9 @@ export class LoginComponent {
       this.store.dispatch(
         authActions.loginFailure({ erros: { error: 'infromation invalid !' } })
       );
+      this.sncakBar.open('infromation invalid !', 'Close', {
+        duration: 3000,
+      });
     }
   }
 }

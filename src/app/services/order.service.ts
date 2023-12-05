@@ -27,7 +27,7 @@ export class OrderService {
     }
 
     getHistoryOrdersUser(id: string): Observable<OrderClient[]> {
-      const url = environment.apiUrl + 'filter/Order/';
+      const url = environment.apiUrl + 'OrderUser/filter/Order/';
         var headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin': 'http://localhost:4200',

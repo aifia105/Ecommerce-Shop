@@ -17,6 +17,7 @@ export class ProductDetailComponent implements OnDestroy {
   private unsubscribe$ = new Subscription();
   quantity : number = 1;
   id : string = '';
+  categoryId ?: string = '';
   currentProduct !: Product ;
   relatedProducts : Product[] = [];
 
@@ -26,12 +27,18 @@ export class ProductDetailComponent implements OnDestroy {
     this.id = this.route.snapshot.params['id'];
     console.log(this.id);
       this.productService.getProduct(this.id).pipe().subscribe((data) => {
+        data.image = 'data:image/jpeg;base64,' + data.image;
         this.currentProduct = data;
-        console.log(this.currentProduct);
-      });
-      this.productService.getAllProductsByCategory(this.currentProduct?.category.id).pipe().subscribe((data) => {
-        this.relatedProducts = data;
-        console.log(this.relatedProducts);
+        this.categoryId = this.currentProduct.category.id;
+        console.log(this.categoryId);
+        this.productService.getAllProductsByCategory(this.categoryId).pipe().subscribe((data) => {
+          data = data.map((item) => {
+            item.image  = 'data:image/jpeg;base64,' + item.image;
+            return item;
+          })
+          this.relatedProducts = data;
+          console.log(this.relatedProducts);
+        });
       });
   }
   addToCart(productDto: Product) {

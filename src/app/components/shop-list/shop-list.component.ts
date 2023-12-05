@@ -6,7 +6,7 @@ import { shopActions } from './store/actions';
 import { cartActions } from '../cart/store/actions';
 import { wishlistActions } from '../wishlist/store/actions';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { selectProducts } from './store/reducers';
+import { selectCategorys, selectProducts } from './store/reducers';
 
 @Component({
   selector: 'app-shop-list',
@@ -18,21 +18,40 @@ export class ShopListComponent implements OnInit {
   isSelected: boolean = true;
   products: Product[] = [];
 
-  categories: Category[] = [
-    { nameCategory: 'Apparel and accessories' },
-    { nameCategory: 'Consumer electronics' },
-    { nameCategory: 'Books, movies and music ' },
-    { nameCategory: 'Clothing and Shoes' },
-    { nameCategory: 'Personal care and beauty' },
-    { nameCategory: 'Furniture and decor' },
-  ];
+  categories: Category[] = [];
   constructor(private store: Store, private sncakBar: MatSnackBar) {}
   ngOnInit(): void {
     this.store.dispatch(shopActions.getCategory());
+    this.store
+      .select(selectCategorys)
+      .pipe()
+      .subscribe(async (categories: Category[] | null) => {
+        if (categories !== null) {
+          this.categories = categories.map((category) => {
+            if (category.image) {
+              return {
+                ...category,
+                image: 'data:image/jpeg;base64,' + category.image,
+              };
+            }
+            return category;
+          });
+          console.log(this.categories);
+        }
+      });
     this.store.dispatch(shopActions.getProducts());
-    this.store.select(selectProducts).pipe().subscribe((data) => {
-      if (data !== null) {
-        this.products = data;
+    this.store.select(selectProducts).pipe().subscribe(async (product: Product[] | null) => {
+      if (product !== null) {
+        this.products = product.map((product) => {
+          if (product.image) {
+            return {
+              ...product,
+              image: 'data:image/jpeg;base64,' + product.image,
+            };
+          }
+          return product;
+        });
+        console.log(this.products);
       }
     })
   }

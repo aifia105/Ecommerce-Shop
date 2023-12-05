@@ -8,27 +8,34 @@ import { Product } from 'src/app/models/product';
 @Component({
   selector: 'app-productslist',
   templateUrl: './productslist.component.html',
-  styleUrls: ['./productslist.component.scss']
+  styleUrls: ['./productslist.component.scss'],
 })
 export class ProductslistComponent implements OnDestroy {
   private unsubscribe$ = new Subscription();
-  product : Product[] = []; 
+  products: Product[] = [];
   constructor(private store: Store) {}
   ngOnInit() {
     this.store.dispatch(shopActions.getProducts());
-    this.store.select(selectProducts).pipe().subscribe((products: Product[] | null) => {
-       if(products !== null) {
-        this.product = products;
-        console.log(this.product);
+    this.store
+      .select(selectProducts)
+      .pipe()
+      .subscribe(async (product: Product[] | null) => {
+        if (product !== null) {
+          this.products = product.map((product) => {
+            if (product.image) {
+              return {
+                ...product,
+                image: 'data:image/jpeg;base64,' + product.image,
+              };
+            }
+            return product;
+          });
+          console.log(this.products);
         }
-        });     
-}
-    
+      });
+  }
 
-  
   ngOnDestroy(): void {
     this.unsubscribe$.unsubscribe();
   }
-
-
 }
